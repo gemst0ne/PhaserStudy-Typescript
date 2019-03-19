@@ -1522,11 +1522,11 @@ declare type GroupConfig = {
 };
 
 /**
- * The total number of components created will be
+ * The total number of objects created will be
  * 
  *     key.length * frame.length * frameQuantity * (yoyo ? 2 : 1) * (1 + repeat)
  * 
- * In the simplest case, 1 + `repeat` components will be created.
+ * In the simplest case, 1 + `repeat` objects will be created.
  * 
  * If `max` is positive, then the total created will not exceed `max`.
  * 
@@ -2145,7 +2145,7 @@ declare type PathConfig = {
      */
     rotateToPath?: boolean;
     /**
-     * If the PathFollower is rotating to match the Path, this value is added to the rotation value. This allows you to rotate components to a path but control the angle of the rotation as well.
+     * If the PathFollower is rotating to match the Path, this value is added to the rotation value. This allows you to rotate objects to a path but control the angle of the rotation as well.
      */
     rotationOffset?: number;
     /**
@@ -2388,7 +2388,7 @@ declare type Vector2Like = {
 declare namespace Phaser {
     namespace Actions {
         /**
-         * Takes an array of Game Objects, or any components that have a public `angle` property,
+         * Takes an array of Game Objects, or any objects that have a public `angle` property,
          * and then adds the given value to each of their `angle` properties.
          * 
          * The optional `step` property is applied incrementally, multiplied by each item in the array.
@@ -2403,7 +2403,7 @@ declare namespace Phaser {
         function Angle<G extends Phaser.GameObjects.GameObject[]>(items: G, value: number, step?: number, index?: integer, direction?: integer): G;
 
         /**
-         * Takes an array of components and passes each of them to the given callback.
+         * Takes an array of objects and passes each of them to the given callback.
          * @param items The array of items to be updated by this action.
          * @param callback The callback to be invoked. It will be passed just one argument: the item from the array.
          * @param context The scope in which the callback will be invoked.
@@ -2411,7 +2411,7 @@ declare namespace Phaser {
         function Call<G extends Phaser.GameObjects.GameObject[]>(items: G, callback: CallCallback, context: any): G;
 
         /**
-         * Takes an array of components and returns the first element in the array that has properties which match
+         * Takes an array of objects and returns the first element in the array that has properties which match
          * all of those specified in the `compare` object. For example, if the compare object was: `{ scaleX: 0.5, alpha: 1 }`
          * then it would return the first item which had the property `scaleX` set to 0.5 and `alpha` set to 1.
          * 
@@ -2423,7 +2423,7 @@ declare namespace Phaser {
         function GetFirst<G extends Phaser.GameObjects.GameObject[]>(items: G, compare: object, index?: integer): object | Phaser.GameObjects.GameObject;
 
         /**
-         * Takes an array of components and returns the last element in the array that has properties which match
+         * Takes an array of objects and returns the last element in the array that has properties which match
          * all of those specified in the `compare` object. For example, if the compare object was: `{ scaleX: 0.5, alpha: 1 }`
          * then it would return the last item which had the property `scaleX` set to 0.5 and `alpha` set to 1.
          * 
@@ -2435,7 +2435,7 @@ declare namespace Phaser {
         function GetLast<G extends Phaser.GameObjects.GameObject[]>(items: G, compare: object, index?: integer): object | Phaser.GameObjects.GameObject;
 
         /**
-         * Takes an array of Game Objects, or any components that have public `x` and `y` properties,
+         * Takes an array of Game Objects, or any objects that have public `x` and `y` properties,
          * and then aligns them based on the grid configuration given to this action.
          * @param items The array of items to be updated by this action.
          * @param options The GridAlign Configuration object.
@@ -2443,7 +2443,7 @@ declare namespace Phaser {
         function GridAlign<G extends Phaser.GameObjects.GameObject[]>(items: G, options: GridAlignConfig): G;
 
         /**
-         * Takes an array of Game Objects, or any components that have a public `alpha` property,
+         * Takes an array of Game Objects, or any objects that have a public `alpha` property,
          * and then adds the given value to each of their `alpha` properties.
          * 
          * The optional `step` property is applied incrementally, multiplied by each item in the array.
@@ -2458,7 +2458,7 @@ declare namespace Phaser {
         function IncAlpha<G extends Phaser.GameObjects.GameObject[]>(items: G, value: number, step?: number, index?: integer, direction?: integer): G;
 
         /**
-         * Takes an array of Game Objects, or any components that have a public `x` property,
+         * Takes an array of Game Objects, or any objects that have a public `x` property,
          * and then adds the given value to each of their `x` properties.
          * 
          * The optional `step` property is applied incrementally, multiplied by each item in the array.
@@ -2473,7 +2473,7 @@ declare namespace Phaser {
         function IncX<G extends Phaser.GameObjects.GameObject[]>(items: G, value: number, step?: number, index?: integer, direction?: integer): G;
 
         /**
-         * Takes an array of Game Objects, or any components that have public `x` and `y` properties,
+         * Takes an array of Game Objects, or any objects that have public `x` and `y` properties,
          * and then adds the given value to each of them.
          * 
          * The optional `stepX` and `stepY` properties are applied incrementally, multiplied by each item in the array.
@@ -2490,7 +2490,7 @@ declare namespace Phaser {
         function IncXY<G extends Phaser.GameObjects.GameObject[]>(items: G, x: number, y?: number, stepX?: number, stepY?: number, index?: integer, direction?: integer): G;
 
         /**
-         * Takes an array of Game Objects, or any components that have a public `y` property,
+         * Takes an array of Game Objects, or any objects that have a public `y` property,
          * and then adds the given value to each of their `y` properties.
          * 
          * The optional `step` property is applied incrementally, multiplied by each item in the array.
@@ -2563,7 +2563,7 @@ declare namespace Phaser {
         function PlayAnimation<G extends Phaser.GameObjects.GameObject[]>(items: G, key: string, startFrame?: string | integer): G;
 
         /**
-         * Takes an array of Game Objects, or any components that have a public property as defined in `key`,
+         * Takes an array of Game Objects, or any objects that have a public property as defined in `key`,
          * and then adds the given value to it.
          * 
          * The optional `step` property is applied incrementally, multiplied by each item in the array.
@@ -2579,7 +2579,7 @@ declare namespace Phaser {
         function PropertyValueInc<G extends Phaser.GameObjects.GameObject[]>(items: G, key: string, value: number, step?: number, index?: integer, direction?: integer): G;
 
         /**
-         * Takes an array of Game Objects, or any components that have a public property as defined in `key`,
+         * Takes an array of Game Objects, or any objects that have a public property as defined in `key`,
          * and then sets it to the given value.
          * 
          * The optional `step` property is applied incrementally, multiplied by each item in the array.
@@ -2638,7 +2638,7 @@ declare namespace Phaser {
         function RandomTriangle<G extends Phaser.GameObjects.GameObject[]>(items: G, triangle: Phaser.Geom.Triangle): G;
 
         /**
-         * Takes an array of Game Objects, or any components that have a public `rotation` property,
+         * Takes an array of Game Objects, or any objects that have a public `rotation` property,
          * and then adds the given value to each of their `rotation` properties.
          * 
          * The optional `step` property is applied incrementally, multiplied by each item in the array.
@@ -2670,7 +2670,7 @@ declare namespace Phaser {
         function RotateAroundDistance<G extends Phaser.GameObjects.GameObject[]>(items: G, point: object, angle: number, distance: number): G;
 
         /**
-         * Takes an array of Game Objects, or any components that have a public `scaleX` property,
+         * Takes an array of Game Objects, or any objects that have a public `scaleX` property,
          * and then adds the given value to each of their `scaleX` properties.
          * 
          * The optional `step` property is applied incrementally, multiplied by each item in the array.
@@ -2685,7 +2685,7 @@ declare namespace Phaser {
         function ScaleX<G extends Phaser.GameObjects.GameObject[]>(items: G, value: number, step?: number, index?: integer, direction?: integer): G;
 
         /**
-         * Takes an array of Game Objects, or any components that have public `scaleX` and `scaleY` properties,
+         * Takes an array of Game Objects, or any objects that have public `scaleX` and `scaleY` properties,
          * and then adds the given value to each of them.
          * 
          * The optional `stepX` and `stepY` properties are applied incrementally, multiplied by each item in the array.
@@ -2702,7 +2702,7 @@ declare namespace Phaser {
         function ScaleXY<G extends Phaser.GameObjects.GameObject[]>(items: G, scaleX: number, scaleY?: number, stepX?: number, stepY?: number, index?: integer, direction?: integer): G;
 
         /**
-         * Takes an array of Game Objects, or any components that have a public `scaleY` property,
+         * Takes an array of Game Objects, or any objects that have a public `scaleY` property,
          * and then adds the given value to each of their `scaleY` properties.
          * 
          * The optional `step` property is applied incrementally, multiplied by each item in the array.
@@ -2717,7 +2717,7 @@ declare namespace Phaser {
         function ScaleY<G extends Phaser.GameObjects.GameObject[]>(items: G, value: number, step?: number, index?: integer, direction?: integer): G;
 
         /**
-         * Takes an array of Game Objects, or any components that have the public property `alpha`
+         * Takes an array of Game Objects, or any objects that have the public property `alpha`
          * and then sets it to the given value.
          * 
          * The optional `step` property is applied incrementally, multiplied by each item in the array.
@@ -2732,7 +2732,7 @@ declare namespace Phaser {
         function SetAlpha<G extends Phaser.GameObjects.GameObject[]>(items: G, value: number, step?: number, index?: integer, direction?: integer): G;
 
         /**
-         * Takes an array of Game Objects, or any components that have the public property `blendMode`
+         * Takes an array of Game Objects, or any objects that have the public property `blendMode`
          * and then sets it to the given value.
          * 
          * The optional `step` property is applied incrementally, multiplied by each item in the array.
@@ -2746,7 +2746,7 @@ declare namespace Phaser {
         function SetBlendMode<G extends Phaser.GameObjects.GameObject[]>(items: G, value: number, index?: integer, direction?: integer): G;
 
         /**
-         * Takes an array of Game Objects, or any components that have the public property `depth`
+         * Takes an array of Game Objects, or any objects that have the public property `depth`
          * and then sets it to the given value.
          * 
          * The optional `step` property is applied incrementally, multiplied by each item in the array.
@@ -2769,7 +2769,7 @@ declare namespace Phaser {
         function SetHitArea<G extends Phaser.GameObjects.GameObject[]>(items: G, hitArea: any, hitAreaCallback: HitAreaCallback): G;
 
         /**
-         * Takes an array of Game Objects, or any components that have the public properties `originX` and `originY`
+         * Takes an array of Game Objects, or any objects that have the public properties `originX` and `originY`
          * and then sets them to the given values.
          * 
          * The optional `stepX` and `stepY` properties are applied incrementally, multiplied by each item in the array.
@@ -2786,7 +2786,7 @@ declare namespace Phaser {
         function SetOrigin<G extends Phaser.GameObjects.GameObject[]>(items: G, originX: number, originY?: number, stepX?: number, stepY?: number, index?: integer, direction?: integer): G;
 
         /**
-         * Takes an array of Game Objects, or any components that have the public property `rotation`
+         * Takes an array of Game Objects, or any objects that have the public property `rotation`
          * and then sets it to the given value.
          * 
          * The optional `step` property is applied incrementally, multiplied by each item in the array.
@@ -2801,7 +2801,7 @@ declare namespace Phaser {
         function SetRotation<G extends Phaser.GameObjects.GameObject[]>(items: G, value: number, step?: number, index?: integer, direction?: integer): G;
 
         /**
-         * Takes an array of Game Objects, or any components that have the public properties `scaleX` and `scaleY`
+         * Takes an array of Game Objects, or any objects that have the public properties `scaleX` and `scaleY`
          * and then sets them to the given values.
          * 
          * The optional `stepX` and `stepY` properties are applied incrementally, multiplied by each item in the array.
@@ -2818,7 +2818,7 @@ declare namespace Phaser {
         function SetScale<G extends Phaser.GameObjects.GameObject[]>(items: G, scaleX: number, scaleY?: number, stepX?: number, stepY?: number, index?: integer, direction?: integer): G;
 
         /**
-         * Takes an array of Game Objects, or any components that have the public property `scaleX`
+         * Takes an array of Game Objects, or any objects that have the public property `scaleX`
          * and then sets it to the given value.
          * 
          * The optional `step` property is applied incrementally, multiplied by each item in the array.
@@ -2833,7 +2833,7 @@ declare namespace Phaser {
         function SetScaleX<G extends Phaser.GameObjects.GameObject[]>(items: G, value: number, step?: number, index?: integer, direction?: integer): G;
 
         /**
-         * Takes an array of Game Objects, or any components that have the public property `scaleY`
+         * Takes an array of Game Objects, or any objects that have the public property `scaleY`
          * and then sets it to the given value.
          * 
          * The optional `step` property is applied incrementally, multiplied by each item in the array.
@@ -2848,7 +2848,7 @@ declare namespace Phaser {
         function SetScaleY<G extends Phaser.GameObjects.GameObject[]>(items: G, value: number, step?: number, index?: integer, direction?: integer): G;
 
         /**
-         * Takes an array of Game Objects, or any components that have the public method setTint() and then updates it to the given value(s). You can specify tint color per corner or provide only one color value for `topLeft` parameter, in which case whole item will be tinted with that color.
+         * Takes an array of Game Objects, or any objects that have the public method setTint() and then updates it to the given value(s). You can specify tint color per corner or provide only one color value for `topLeft` parameter, in which case whole item will be tinted with that color.
          * @param items An array of Game Objects. The contents of this array are updated by this Action.
          * @param topLeft The tint being applied to top-left corner of item. If other parameters are given no value, this tint will be applied to whole item.
          * @param topRight The tint to be applied to top-right corner of item.
@@ -2858,7 +2858,7 @@ declare namespace Phaser {
         function SetTint<G extends Phaser.GameObjects.GameObject[]>(items: G, topLeft: number, topRight?: number, bottomLeft?: number, bottomRight?: number): G;
 
         /**
-         * Takes an array of Game Objects, or any components that have the public property `visible`
+         * Takes an array of Game Objects, or any objects that have the public property `visible`
          * and then sets it to the given value.
          * 
          * To use this with a Group: `SetVisible(group.getChildren(), value)`
@@ -2870,7 +2870,7 @@ declare namespace Phaser {
         function SetVisible<G extends Phaser.GameObjects.GameObject[]>(items: G, value: boolean, index?: integer, direction?: integer): G;
 
         /**
-         * Takes an array of Game Objects, or any components that have the public property `x`
+         * Takes an array of Game Objects, or any objects that have the public property `x`
          * and then sets it to the given value.
          * 
          * The optional `step` property is applied incrementally, multiplied by each item in the array.
@@ -2885,7 +2885,7 @@ declare namespace Phaser {
         function SetX<G extends Phaser.GameObjects.GameObject[]>(items: G, value: number, step?: number, index?: integer, direction?: integer): G;
 
         /**
-         * Takes an array of Game Objects, or any components that have the public properties `x` and `y`
+         * Takes an array of Game Objects, or any objects that have the public properties `x` and `y`
          * and then sets them to the given values.
          * 
          * The optional `stepX` and `stepY` properties are applied incrementally, multiplied by each item in the array.
@@ -2902,7 +2902,7 @@ declare namespace Phaser {
         function SetXY<G extends Phaser.GameObjects.GameObject[]>(items: G, x: number, y?: number, stepX?: number, stepY?: number, index?: integer, direction?: integer): G;
 
         /**
-         * Takes an array of Game Objects, or any components that have the public property `y`
+         * Takes an array of Game Objects, or any objects that have the public property `y`
          * and then sets it to the given value.
          * 
          * The optional `step` property is applied incrementally, multiplied by each item in the array.
@@ -2927,7 +2927,7 @@ declare namespace Phaser {
          * @param x The x coordinate to place the first item in the array at.
          * @param y The y coordinate to place the first item in the array at.
          * @param direction The iteration direction. 0 = first to last and 1 = last to first. Default 0.
-         * @param output An optional objec to store the final components position in.
+         * @param output An optional objec to store the final objects position in.
          */
         function ShiftPosition<G extends Phaser.GameObjects.GameObject[], O extends Phaser.Math.Vector2>(items: G, x: number, y: number, direction?: integer, output?: O): O;
 
@@ -3001,10 +3001,10 @@ declare namespace Phaser {
         /**
          * A Frame based Animation.
          * 
-         * This consists of a key, some default values (like the frame rate) and a bunch of Frame components.
+         * This consists of a key, some default values (like the frame rate) and a bunch of Frame objects.
          * 
          * The Animation Manager creates these. Game Objects don't own an instance of these directly.
-         * Game Objects have the Animation Component, which are like playheads to global Animations (these components)
+         * Game Objects have the Animation Component, which are like playheads to global Animations (these objects)
          * So multiple Game Objects can have playheads all pointing to this one Animation instance.
          */
         class Animation extends Phaser.Events.EventEmitter {
@@ -3403,9 +3403,9 @@ declare namespace Phaser {
             generateFrameNames(key: string, config?: Phaser.Animations.Types.GenerateFrameNames): Phaser.Animations.Types.AnimationFrame[];
 
             /**
-             * Generate an array of {@link Phaser.Animations.Types.AnimationFrame} components from a texture key and configuration object.
+             * Generate an array of {@link Phaser.Animations.Types.AnimationFrame} objects from a texture key and configuration object.
              * 
-             * Generates components with numbered frame names, as configured by the given {@link Phaser.Animations.Types.GenerateFrameNumbers}.
+             * Generates objects with numbered frame names, as configured by the given {@link Phaser.Animations.Types.GenerateFrameNumbers}.
              * @param key The key for the texture containing the animation frames.
              * @param config The configuration object for the animation frames.
              */
@@ -3459,13 +3459,13 @@ declare namespace Phaser {
             staggerPlay<G extends Phaser.GameObjects.GameObject[]>(key: string, children: Phaser.GameObjects.GameObject | Phaser.GameObjects.GameObject[], stagger?: number): G;
 
             /**
-             * Get the animation data as javascript object by giving key, or get the data of all animations as array of components, if key wasn't provided.
+             * Get the animation data as javascript object by giving key, or get the data of all animations as array of objects, if key wasn't provided.
              * @param key [description]
              */
             toJSON(key: string): Phaser.Animations.Types.JSONAnimations;
 
             /**
-             * Destroy this Animation Manager and clean up animation definitions and references to other components.
+             * Destroy this Animation Manager and clean up animation definitions and references to other objects.
              * This method should not be called directly. It will be called automatically as a response to a `destroy` event from the Phaser.Game instance.
              */
             destroy(): void;
@@ -3751,7 +3751,7 @@ declare namespace Phaser {
                  */
                 zeroPad?: integer;
                 /**
-                 * The array to append the created configuration components to.
+                 * The array to append the created configuration objects to.
                  */
                 outputArray?: Phaser.Animations.Types.AnimationFrame[];
                 /**
@@ -3874,7 +3874,7 @@ declare namespace Phaser {
          */
         class BaseCache {
             /**
-             * The Map in which the cache components are stored.
+             * The Map in which the cache objects are stored.
              * 
              * You can query the Map directly or use the BaseCache methods.
              */
@@ -4275,7 +4275,7 @@ declare namespace Phaser {
                 centerToSize(): Phaser.Cameras.Scene2D.BaseCamera;
 
                 /**
-                 * Takes an array of Game Objects and returns a new array featuring only those components
+                 * Takes an array of Game Objects and returns a new array featuring only those objects
                  * visible by this camera.
                  * @param renderableObjects An array of Game Objects to cull.
                  */
@@ -5283,7 +5283,7 @@ declare namespace Phaser {
                 roundPixels: boolean;
 
                 /**
-                 * An Array of the Camera components being managed by this Camera Manager.
+                 * An Array of the Camera objects being managed by this Camera Manager.
                  * The Cameras are updated and rendered in the same order in which they appear in this array.
                  * Do not directly add or remove entries to this array. However, you can move the contents
                  * around the array should you wish to adjust the display order.
@@ -5354,7 +5354,7 @@ declare namespace Phaser {
                 getTotal(isVisible?: boolean): integer;
 
                 /**
-                 * Populates this Camera Manager based on the given configuration object, or an array of config components.
+                 * Populates this Camera Manager based on the given configuration object, or an array of config objects.
                  * 
                  * See the `InputJSONCameraObject` documentation for details of the object structure.
                  * @param config A Camera configuration object, or an array of them, to be added to this Camera Manager.
@@ -5433,7 +5433,7 @@ declare namespace Phaser {
                  * 
                  * This effect will fade the camera viewport to the given color, over the duration specified.
                  * 
-                 * Only the camera viewport is faded. None of the components it is displaying are impacted, i.e. their colors do
+                 * Only the camera viewport is faded. None of the objects it is displaying are impacted, i.e. their colors do
                  * not change.
                  * 
                  * The effect will dispatch several events on the Camera itself and you can also specify an `onUpdate` callback,
@@ -5537,7 +5537,7 @@ declare namespace Phaser {
                  * 
                  * This effect will flash the camera viewport to the given color, over the duration specified.
                  * 
-                 * Only the camera viewport is flashed. None of the components it is displaying are impacted, i.e. their colors do
+                 * Only the camera viewport is flashed. None of the objects it is displaying are impacted, i.e. their colors do
                  * not change.
                  * 
                  * The effect will dispatch several events on the Camera itself and you can also specify an `onUpdate` callback,
@@ -5627,7 +5627,7 @@ declare namespace Phaser {
                  * This effect will scroll the Camera so that the center of its viewport finishes at the given destination,
                  * over the duration and with the ease specified.
                  * 
-                 * Only the camera scroll is moved. None of the components it is displaying are impacted, i.e. their positions do
+                 * Only the camera scroll is moved. None of the objects it is displaying are impacted, i.e. their positions do
                  * not change.
                  * 
                  * The effect will dispatch several events on the Camera itself and you can also specify an `onUpdate` callback,
@@ -5725,7 +5725,7 @@ declare namespace Phaser {
                  * 
                  * This effect will shake the camera viewport by a random amount, bounded by the specified intensity, each frame.
                  * 
-                 * Only the camera viewport is moved. None of the components it is displaying are impacted, i.e. their positions do
+                 * Only the camera viewport is moved. None of the objects it is displaying are impacted, i.e. their positions do
                  * not change.
                  * 
                  * The effect will dispatch several events on the Camera itself and you can also specify an `onUpdate` callback,
@@ -6777,7 +6777,7 @@ declare namespace Phaser {
             readonly inputTouchCapture: boolean;
 
             /**
-             * The number of Pointer components created by default. In a mouse-only, or non-multi touch game, you can leave this as 1.
+             * The number of Pointer objects created by default. In a mouse-only, or non-multi touch game, you can leave this as 1.
              */
             readonly inputActivePointers: integer;
 
@@ -7317,7 +7317,7 @@ declare namespace Phaser {
 
             /**
              * Destroys the TimeStep. This will stop Request Animation Frame, stop the step, clear the callbacks and null
-             * any components.
+             * any objects.
              */
             destroy(): void;
 
@@ -9438,7 +9438,7 @@ declare namespace Phaser {
                 function RGBWithRGB(r1: number, g1: number, b1: number, r2: number, g2: number, b2: number, length?: number, index?: number): ColorObject;
 
                 /**
-                 * Interpolates between the two given color components over the length supplied.
+                 * Interpolates between the two given color objects over the length supplied.
                  * @param color1 The first Color object.
                  * @param color2 The second Color object.
                  * @param length Distance to interpolate over. Default 100.
@@ -9804,8 +9804,8 @@ declare namespace Phaser {
              * corresponding pixel in the mask.
              * 
              * The Bitmap Mask's location matches the location of its Game Object, not the location of the
-             * masked components. Moving or transforming the underlying Game Object will change the mask
-             * (and affect the visibility of any masked components), whereas moving or transforming a masked object
+             * masked objects. Moving or transforming the underlying Game Object will change the mask
+             * (and affect the visibility of any masked objects), whereas moving or transforming a masked object
              * will not affect the mask.
              * 
              * The Bitmap Mask will not render its Game Object by itself. If the Game Object is not in a
@@ -9921,12 +9921,12 @@ declare namespace Phaser {
              * if the Graphics Game Object of the Geometry Mask has a visible pixel at the same position. The color and
              * alpha of the pixel from the Geometry Mask do not matter.
              * 
-             * The Geometry Mask's location matches the location of its Graphics object, not the location of the masked components.
+             * The Geometry Mask's location matches the location of its Graphics object, not the location of the masked objects.
              * Moving or transforming the underlying Graphics object will change the mask (and affect the visibility
-             * of any masked components), whereas moving or transforming a masked object will not affect the mask.
+             * of any masked objects), whereas moving or transforming a masked object will not affect the mask.
              * You can think of the Geometry Mask (or rather, of the its Graphics object) as an invisible curtain placed
-             * in front of all masked components which has its own visual properties and, naturally, respects the camera's
-             * visual properties, but isn't affected by and doesn't follow the masked components by itself.
+             * in front of all masked objects which has its own visual properties and, naturally, respects the camera's
+             * visual properties, but isn't affected by and doesn't follow the masked objects by itself.
              */
             class GeometryMask {
                 /**
@@ -10195,18 +10195,18 @@ declare namespace Phaser {
 
     namespace GameObjects {
         /**
-         * BitmapText components work by taking a texture file and an XML or JSON file that describes the font structure.
+         * BitmapText objects work by taking a texture file and an XML or JSON file that describes the font structure.
          * 
          * During rendering for each letter of the text is rendered to the display, proportionally spaced out and aligned to
          * match the font structure.
          * 
-         * Dynamic Bitmap Text components are different from Static Bitmap Text in that they invoke a callback for each
+         * Dynamic Bitmap Text objects are different from Static Bitmap Text in that they invoke a callback for each
          * letter being rendered during the render pass. This callback allows you to manipulate the properties of
          * each letter being rendered, such as its position, scale or tint, allowing you to create interesting effects
          * like jiggling text, which can't be done with Static text. This means that Dynamic Text takes more processing
          * time, so only use them if you require the callback ability they have.
          * 
-         * BitmapText components are less flexible than Text components, in that they have less features such as shadows, fills and the ability
+         * BitmapText objects are less flexible than Text objects, in that they have less features such as shadows, fills and the ability
          * to use Web Fonts, however you trade this flexibility for rendering speed. You can also create visually compelling BitmapTexts by
          * processing the font texture in an image editor, applying fills and any other effects required.
          * 
@@ -11025,12 +11025,12 @@ declare namespace Phaser {
         }
 
         /**
-         * BitmapText components work by taking a texture file and an XML or JSON file that describes the font structure.
+         * BitmapText objects work by taking a texture file and an XML or JSON file that describes the font structure.
          * 
          * During rendering for each letter of the text is rendered to the display, proportionally spaced out and aligned to
          * match the font structure.
          * 
-         * BitmapText components are less flexible than Text components, in that they have less features such as shadows, fills and the ability
+         * BitmapText objects are less flexible than Text objects, in that they have less features such as shadows, fills and the ability
          * to use Web Fonts, however you trade this flexibility for rendering speed. You can also create visually compelling BitmapTexts by
          * processing the font texture in an image editor, applying fills and any other effects required.
          * 
@@ -11829,7 +11829,7 @@ declare namespace Phaser {
         /**
          * A Blitter Game Object.
          * 
-         * The Blitter Game Object is a special kind of container that creates, updates and manages Bob components.
+         * The Blitter Game Object is a special kind of container that creates, updates and manages Bob objects.
          * Bobs are designed for rendering speed rather than flexibility. They consist of a texture, or frame from a texture,
          * a position and an alpha value. You cannot scale or rotate them. They use a batched drawing method for speed
          * during rendering.
@@ -11838,7 +11838,7 @@ declare namespace Phaser {
          * Texture to render with, but they cannot use any other Texture. It is this single texture-bind that allows
          * them their speed.
          * 
-         * If you have a need to blast a large volume of frames around the screen then Blitter components are well worth
+         * If you have a need to blast a large volume of frames around the screen then Blitter objects are well worth
          * investigating. They are especially useful for using as a base for your own special effects systems.
          */
         class Blitter extends Phaser.GameObjects.GameObject implements Phaser.GameObjects.Components.Alpha, Phaser.GameObjects.Components.BlendMode, Phaser.GameObjects.Components.Depth, Phaser.GameObjects.Components.Mask, Phaser.GameObjects.Components.Pipeline, Phaser.GameObjects.Components.ScaleMode, Phaser.GameObjects.Components.ScrollFactor, Phaser.GameObjects.Components.Size, Phaser.GameObjects.Components.Texture, Phaser.GameObjects.Components.Transform, Phaser.GameObjects.Components.Visible {
@@ -11854,7 +11854,7 @@ declare namespace Phaser {
 
             /**
              * The children of this Blitter.
-             * This List contains all of the Bob components created by the Blitter.
+             * This List contains all of the Bob objects created by the Blitter.
              */
             children: Phaser.Structs.List<Phaser.GameObjects.Bob>;
 
@@ -11878,9 +11878,9 @@ declare namespace Phaser {
             create(x: number, y: number, frame?: string | integer | Phaser.Textures.Frame, visible?: boolean, index?: integer): Phaser.GameObjects.Bob;
 
             /**
-             * Creates multiple Bob components within this Blitter and then passes each of them to the specified callback.
+             * Creates multiple Bob objects within this Blitter and then passes each of them to the specified callback.
              * @param callback The callback to invoke after creating a bob. It will be sent two arguments: The Bob and the index of the Bob.
-             * @param quantity The quantity of Bob components to create.
+             * @param quantity The quantity of Bob objects to create.
              * @param frame The Frame the Bobs will use. It must be part of the Blitter Texture.
              * @param visible Should the created Bob render or not? Default true.
              */
@@ -11893,7 +11893,7 @@ declare namespace Phaser {
              * 
              * If the quantity is set to 10 and you provide 2 frames, then 20 Bobs will be created. 10 with the first
              * frame and 10 with the second.
-             * @param quantity The quantity of Bob components to create.
+             * @param quantity The quantity of Bob objects to create.
              * @param frame The Frame the Bobs will use. It must be part of the Blitter Texture.
              * @param visible Should the created Bob render or not? Default true.
              */
@@ -12472,7 +12472,7 @@ declare namespace Phaser {
          * Bob positions are relative to the Blitter parent. So if you move the Blitter parent, all Bob children will
          * have their positions impacted by this change as well.
          * 
-         * You can manipulate Bob components directly from your game code, but the creation and destruction of them should be
+         * You can manipulate Bob objects directly from your game code, but the creation and destruction of them should be
          * handled via the Blitter parent.
          */
         class Bob {
@@ -14274,7 +14274,7 @@ declare namespace Phaser {
              * getting their respective bounds, and then working out a min-max rectangle from that.
              * It does not factor in if the children render or not, all are included.
              * 
-             * Some children are unable to return their bounds, such as Graphics components, in which case
+             * Some children are unable to return their bounds, such as Graphics objects, in which case
              * they are skipped.
              * 
              * Depending on the quantity of children in this Container it could be a really expensive call,
@@ -14464,14 +14464,14 @@ declare namespace Phaser {
 
             /**
              * Brings the given Game Object to the top of this Container.
-             * This will cause it to render on-top of any other components in the Container.
+             * This will cause it to render on-top of any other objects in the Container.
              * @param child The Game Object to bring to the top of the Container.
              */
             bringToTop(child: Phaser.GameObjects.GameObject): Phaser.GameObjects.Container;
 
             /**
              * Sends the given Game Object to the bottom of this Container.
-             * This will cause it to render below any other components in the Container.
+             * This will cause it to render below any other objects in the Container.
              * @param child The Game Object to send to the bottom of the Container.
              */
             sendToBack(child: Phaser.GameObjects.GameObject): Phaser.GameObjects.Container;
@@ -15083,7 +15083,7 @@ declare namespace Phaser {
             sortByDepth(childA: Phaser.GameObjects.GameObject, childB: Phaser.GameObjects.GameObject): integer;
 
             /**
-             * Returns an array which contains all components currently on the Display List.
+             * Returns an array which contains all objects currently on the Display List.
              * This is a reference to the main list array, not a copy of it, so be careful not to modify it.
              */
             getChildren(): Phaser.GameObjects.GameObject[];
@@ -15843,8 +15843,8 @@ declare namespace Phaser {
 
             /**
              * The flags that are compared against `RENDER_MASK` to determine if this Game Object will render or not.
-             * The bits are 0001 | 0010 | 0100 | 1000 set by the components Visible, Alpha, Transform and Texture respectively.
-             * If those components are not used by your custom class then you can use this bitmask as you wish.
+             * The bits are 0001 | 0010 | 0100 | 1000 set by the objects Visible, Alpha, Transform and Texture respectively.
+             * If those objects are not used by your custom class then you can use this bitmask as you wish.
              */
             renderFlags: integer;
 
@@ -16027,7 +16027,7 @@ declare namespace Phaser {
             removeInteractive(): this;
 
             /**
-             * To be overridden by custom GameObjects. Allows base components to be used in a Pool.
+             * To be overridden by custom GameObjects. Allows base objects to be used in a Pool.
              * @param args args
              */
             update(...args: any[]): void;
@@ -16065,7 +16065,7 @@ declare namespace Phaser {
              * garbage collection by the browser.
              * 
              * If you just want to temporarily disable an object then look at using the
-             * Game Object Pool instead of destroying it, as destroyed components cannot be resurrected.
+             * Game Object Pool instead of destroying it, as destroyed objects cannot be resurrected.
              * @param fromScene Is this Game Object being destroyed as the result of a Scene shutdown? Default false.
              */
             destroy(fromScene?: boolean): void;
@@ -16288,18 +16288,18 @@ declare namespace Phaser {
             /**
              * Creates a new Dynamic Bitmap Text Game Object and adds it to the Scene.
              * 
-             * BitmapText components work by taking a texture file and an XML or JSON file that describes the font structure.
+             * BitmapText objects work by taking a texture file and an XML or JSON file that describes the font structure.
              * 
              * During rendering for each letter of the text is rendered to the display, proportionally spaced out and aligned to
              * match the font structure.
              * 
-             * Dynamic Bitmap Text components are different from Static Bitmap Text in that they invoke a callback for each
+             * Dynamic Bitmap Text objects are different from Static Bitmap Text in that they invoke a callback for each
              * letter being rendered during the render pass. This callback allows you to manipulate the properties of
              * each letter being rendered, such as its position, scale or tint, allowing you to create interesting effects
              * like jiggling text, which can't be done with Static text. This means that Dynamic Text takes more processing
              * time, so only use them if you require the callback ability they have.
              * 
-             * BitmapText components are less flexible than Text components, in that they have less features such as shadows, fills and the ability
+             * BitmapText objects are less flexible than Text objects, in that they have less features such as shadows, fills and the ability
              * to use Web Fonts, however you trade this flexibility for rendering speed. You can also create visually compelling BitmapTexts by
              * processing the font texture in an image editor, applying fills and any other effects required.
              * 
@@ -16326,12 +16326,12 @@ declare namespace Phaser {
             /**
              * Creates a new Bitmap Text Game Object and adds it to the Scene.
              * 
-             * BitmapText components work by taking a texture file and an XML or JSON file that describes the font structure.
+             * BitmapText objects work by taking a texture file and an XML or JSON file that describes the font structure.
              * 
              * During rendering for each letter of the text is rendered to the display, proportionally spaced out and aligned to
              * match the font structure.
              * 
-             * BitmapText components are less flexible than Text components, in that they have less features such as shadows, fills and the ability
+             * BitmapText objects are less flexible than Text objects, in that they have less features such as shadows, fills and the ability
              * to use Web Fonts, however you trade this flexibility for rendering speed. You can also create visually compelling BitmapTexts by
              * processing the font texture in an image editor, applying fills and any other effects required.
              * 
@@ -16494,7 +16494,7 @@ declare namespace Phaser {
              * 
              * Note: This method will only be available if the Render Texture Game Object has been built into Phaser.
              * 
-             * A Render Texture is a special texture that allows any number of Game Objects to be drawn to it. You can take many complex components and
+             * A Render Texture is a special texture that allows any number of Game Objects to be drawn to it. You can take many complex objects and
              * draw them all to this one texture, which can they be used as the texture for other Game Object's. It's a way to generate dynamic
              * textures at run-time that are WebGL friendly and don't invoke expensive GPU uploads.
              * @param x The horizontal position of this Game Object in the world.
@@ -16734,8 +16734,8 @@ declare namespace Phaser {
              * The Polygon Shape is created by providing a list of points, which are then used to create an
              * internal Polygon geometry object. The points can be set from a variety of formats:
              * 
-             * - An array of Point or Vector2 components: `[new Phaser.Math.Vec2(x1, y1), ...]`
-             * - An array of components with public x/y properties: `[obj1, obj2, ...]`
+             * - An array of Point or Vector2 objects: `[new Phaser.Math.Vec2(x1, y1), ...]`
+             * - An array of objects with public x/y properties: `[obj1, obj2, ...]`
              * - An array of paired numbers that represent point coordinates: `[x1,y1, x2,y2, ...]`
              * - An array of arrays with two elements representing x/y coordinates: `[[x1, y1], [x2, y2], ...]`
              * 
@@ -16844,7 +16844,7 @@ declare namespace Phaser {
              * 
              * A Text Game Object.
              * 
-             * Text components work by creating their own internal hidden Canvas and then renders text to it using
+             * Text objects work by creating their own internal hidden Canvas and then renders text to it using
              * the standard Canvas `fillText` API. It then creates a texture from this canvas which is rendered
              * to your game during the render pass.
              * 
@@ -16862,7 +16862,7 @@ declare namespace Phaser {
              * A note on performance: Every time the contents of a Text object changes, i.e. changing the text being
              * displayed, or the style of the text, it needs to remake the Text canvas, and if on WebGL, re-upload the
              * new texture to the GPU. This can be an expensive operation if used often, or with large quantities of
-             * Text components in your game. If you run into performance issues you would be better off using Bitmap Text
+             * Text objects in your game. If you run into performance issues you would be better off using Bitmap Text
              * instead, as it benefits from batching and avoids expensive Canvas API calls.
              * 
              * Note: This method will only be available if the Text Game Object has been built into Phaser.
@@ -16965,11 +16965,11 @@ declare namespace Phaser {
          * 
          * If your Graphics object doesn't change much (or at all) once you've drawn your shape to it, then you will help
          * performance by calling {@link Phaser.GameObjects.Graphics#generateTexture}. This will 'bake' the Graphics object into
-         * a Texture, and return it. You can then use this Texture for Sprites or other display components. If your Graphics object
+         * a Texture, and return it. You can then use this Texture for Sprites or other display objects. If your Graphics object
          * updates frequently then you should avoid doing this, as it will constantly generate new textures, which will consume
          * memory.
          * 
-         * As you can tell, Graphics components are a bit of a trade-off. While they are extremely useful, you need to be careful
+         * As you can tell, Graphics objects are a bit of a trade-off. While they are extremely useful, you need to be careful
          * in their complexity and quantity of them in your game.
          */
         class Graphics extends Phaser.GameObjects.GameObject implements Phaser.GameObjects.Components.Alpha, Phaser.GameObjects.Components.BlendMode, Phaser.GameObjects.Components.Depth, Phaser.GameObjects.Components.Mask, Phaser.GameObjects.Components.Pipeline, Phaser.GameObjects.Components.Transform, Phaser.GameObjects.Components.Visible, Phaser.GameObjects.Components.ScrollFactor {
@@ -17052,7 +17052,7 @@ declare namespace Phaser {
              * 
              * This feature is best used only on rectangles and triangles. All other shapes will give strange results.
              * 
-             * Note that for components such as arcs or ellipses, or anything which is made out of triangles, each triangle used
+             * Note that for objects such as arcs or ellipses, or anything which is made out of triangles, each triangle used
              * will be filled with a gradient on its own. There is no ability to gradient fill a shape or path as a single
              * entity at this time.
              * @param topLeft The tint being applied to the top-left of the Game Object.
@@ -17072,7 +17072,7 @@ declare namespace Phaser {
              * 
              * This feature is best used only on single lines. All other shapes will give strange results.
              * 
-             * Note that for components such as arcs or ellipses, or anything which is made out of triangles, each triangle used
+             * Note that for objects such as arcs or ellipses, or anything which is made out of triangles, each triangle used
              * will be filled with a gradient on its own. There is no ability to gradient stroke a shape or path as a single
              * entity at this time.
              * @param lineWidth The stroke width.
@@ -17998,7 +17998,7 @@ declare namespace Phaser {
              * If the group becomes {@link Phaser.GameObjects.Group#isFull}, no further Game Objects are created.
              * 
              * Calls {@link Phaser.GameObjects.Group#createMultipleCallback} and {@link Phaser.GameObjects.Group#createCallback}.
-             * @param config Creation settings. This can be a single configuration object or an array of such components, which will be applied in turn.
+             * @param config Creation settings. This can be a single configuration object or an array of such objects, which will be applied in turn.
              */
             createMultiple(config: GroupCreateConfig | GroupCreateConfig[]): any[];
 
@@ -20557,7 +20557,7 @@ declare namespace Phaser {
                 deathCallbackScope: any;
 
                 /**
-                 * Set to hard limit the amount of particle components this emitter is allowed to create.
+                 * Set to hard limit the amount of particle objects this emitter is allowed to create.
                  * 0 means unlimited.
                  */
                 maxParticles: integer;
@@ -21657,7 +21657,7 @@ declare namespace Phaser {
 
             /**
              * If the PathFollower is rotating to match the Path (@see Phaser.GameObjects.PathFollower#rotateToPath)
-             * this value is added to the rotation value. This allows you to rotate components to a path but control
+             * this value is added to the rotation value. This allows you to rotate objects to a path but control
              * the angle of the rotation as well.
              */
             pathRotationOffset: number;
@@ -23244,12 +23244,12 @@ declare namespace Phaser {
         /**
          * A Render Texture.
          * 
-         * A Render Texture is a special texture that allows any number of Game Objects to be drawn to it. You can take many complex components and
+         * A Render Texture is a special texture that allows any number of Game Objects to be drawn to it. You can take many complex objects and
          * draw them all to this one texture, which can they be used as the texture for other Game Object's. It's a way to generate dynamic
          * textures at run-time that are WebGL friendly and don't invoke expensive GPU uploads.
          * 
          * Note that under WebGL a FrameBuffer, which is what the Render Texture uses internally, cannot be anti-aliased. This means
-         * that when drawing components such as Shapes to a Render Texture they will appear to be drawn with no aliasing, however this
+         * that when drawing objects such as Shapes to a Render Texture they will appear to be drawn with no aliasing, however this
          * is a technical limitation of WebGL. To get around it, create your shape as a texture in an art package, then draw that
          * to the Render Texture.
          */
@@ -23399,8 +23399,8 @@ declare namespace Phaser {
             clear(): this;
 
             /**
-             * Draws the given object, or an array of components, to this Render Texture using a blend mode of ERASE.
-             * This has the effect of erasing any filled pixels in the components from this Render Texture.
+             * Draws the given object, or an array of objects, to this Render Texture using a blend mode of ERASE.
+             * This has the effect of erasing any filled pixels in the objects from this Render Texture.
              * 
              * It can accept any of the following:
              * 
@@ -23425,14 +23425,14 @@ declare namespace Phaser {
              * You can pass in a string in which case it will look for a texture in the Texture
              * Manager matching that string, and draw the base frame.
              * 
-             * You can pass in the `x` and `y` coordinates to draw the components at. The use of
-             * the coordinates differ based on what components are being drawn. If the object is
+             * You can pass in the `x` and `y` coordinates to draw the objects at. The use of
+             * the coordinates differ based on what objects are being drawn. If the object is
              * a Group, Container or Display List, the coordinates are _added_ to the positions
              * of the children. For all other types of object, the coordinates are exact.
              * 
              * Calling this method causes the WebGL batch to flush, so it can write the texture
              * data to the framebuffer being used internally. The batch is flushed at the end,
-             * after the entries have been iterated. So if you've a bunch of components to draw,
+             * after the entries have been iterated. So if you've a bunch of objects to draw,
              * try and pass them in an array in one single call, rather than making lots of
              * separate calls.
              * @param entries Any renderable Game Object, or Group, Container, Display List, other Render Texture, Texture Frame or an array of any of these.
@@ -23442,7 +23442,7 @@ declare namespace Phaser {
             erase(entries: any, x?: number, y?: number): this;
 
             /**
-             * Draws the given object, or an array of components, to this Render Texture.
+             * Draws the given object, or an array of objects, to this Render Texture.
              * 
              * It can accept any of the following:
              * 
@@ -23468,8 +23468,8 @@ declare namespace Phaser {
              * Manager matching that string, and draw the base frame. If you need to specify
              * exactly which frame to draw then use the method `drawFrame` instead.
              * 
-             * You can pass in the `x` and `y` coordinates to draw the components at. The use of
-             * the coordinates differ based on what components are being drawn. If the object is
+             * You can pass in the `x` and `y` coordinates to draw the objects at. The use of
+             * the coordinates differ based on what objects are being drawn. If the object is
              * a Group, Container or Display List, the coordinates are _added_ to the positions
              * of the children. For all other types of object, the coordinates are exact.
              * 
@@ -23478,7 +23478,7 @@ declare namespace Phaser {
              * 
              * Calling this method causes the WebGL batch to flush, so it can write the texture
              * data to the framebuffer being used internally. The batch is flushed at the end,
-             * after the entries have been iterated. So if you've a bunch of components to draw,
+             * after the entries have been iterated. So if you've a bunch of objects to draw,
              * try and pass them in an array in one single call, rather than making lots of
              * separate calls.
              * @param entries Any renderable Game Object, or Group, Container, Display List, other Render Texture, Texture Frame or an array of any of these.
@@ -28955,8 +28955,8 @@ declare namespace Phaser {
          * internal Polygon geometry object. The points can be set from a variety of formats:
          * 
          * - A string containing paired values separated by a single space: `'40 0 40 20 100 20 100 80 40 80 40 100 0 50'`
-         * - An array of Point or Vector2 components: `[new Phaser.Math.Vec2(x1, y1), ...]`
-         * - An array of components with public x/y properties: `[obj1, obj2, ...]`
+         * - An array of Point or Vector2 objects: `[new Phaser.Math.Vec2(x1, y1), ...]`
+         * - An array of objects with public x/y properties: `[obj1, obj2, ...]`
          * - An array of paired numbers that represent point coordinates: `[x1,y1, x2,y2, ...]`
          * - An array of arrays with two elements representing x/y coordinates: `[[x1, y1], [x2, y2], ...]`
          * 
@@ -33069,7 +33069,7 @@ declare namespace Phaser {
         /**
          * A Text Game Object.
          * 
-         * Text components work by creating their own internal hidden Canvas and then renders text to it using
+         * Text objects work by creating their own internal hidden Canvas and then renders text to it using
          * the standard Canvas `fillText` API. It then creates a texture from this canvas which is rendered
          * to your game during the render pass.
          * 
@@ -33102,7 +33102,7 @@ declare namespace Phaser {
          * A note on performance: Every time the contents of a Text object changes, i.e. changing the text being
          * displayed, or the style of the text, it needs to remake the Text canvas, and if on WebGL, re-upload the
          * new texture to the GPU. This can be an expensive operation if used often, or with large quantities of
-         * Text components in your game. If you run into performance issues you would be better off using Bitmap Text
+         * Text objects in your game. If you run into performance issues you would be better off using Bitmap Text
          * instead, as it benefits from batching and avoids expensive Canvas API calls.
          */
         class Text extends Phaser.GameObjects.GameObject implements Phaser.GameObjects.Components.Alpha, Phaser.GameObjects.Components.BlendMode, Phaser.GameObjects.Components.ComputedSize, Phaser.GameObjects.Components.Crop, Phaser.GameObjects.Components.Depth, Phaser.GameObjects.Components.Flip, Phaser.GameObjects.Components.GetBounds, Phaser.GameObjects.Components.Mask, Phaser.GameObjects.Components.Origin, Phaser.GameObjects.Components.Pipeline, Phaser.GameObjects.Components.ScaleMode, Phaser.GameObjects.Components.ScrollFactor, Phaser.GameObjects.Components.Tint, Phaser.GameObjects.Components.Transform, Phaser.GameObjects.Components.Visible {
@@ -33228,9 +33228,9 @@ declare namespace Phaser {
             basicWordWrap(text: string, context: CanvasRenderingContext2D, wordWrapWidth: number): string;
 
             /**
-             * Runs the given text through this Text components word wrapping and returns the results as an
+             * Runs the given text through this Text objects word wrapping and returns the results as an
              * array, where each element of the array corresponds to a wrapped line of text.
-             * @param text The text for which the wrapping will be calculated. If unspecified, the Text components current text will be used.
+             * @param text The text for which the wrapping will be calculated. If unspecified, the Text objects current text will be used.
              */
             getWrappedText(text: string): string[];
 
@@ -36084,7 +36084,7 @@ declare namespace Phaser {
             getPoint<O extends Phaser.Geom.Point>(position: number, out?: O): O;
 
             /**
-             * Returns an array of Point components containing the coordinates of the points around the circumference of the Circle,
+             * Returns an array of Point objects containing the coordinates of the points around the circumference of the Circle,
              * based on the given quantity or stepRate values.
              * @param quantity The amount of points to return. If a falsey value the quantity will be derived from the `stepRate` instead.
              * @param stepRate Sets the quantity by getting the circumference of the circle and dividing it by the stepRate.
@@ -36230,7 +36230,7 @@ declare namespace Phaser {
             static GetPoint<O extends Phaser.Geom.Point>(circle: Phaser.Geom.Circle, position: number, out?: O): O;
 
             /**
-             * Returns an array of Point components containing the coordinates of the points around the circumference of the Circle,
+             * Returns an array of Point objects containing the coordinates of the points around the circumference of the Circle,
              * based on the given quantity or stepRate values.
              * @param circle The Circle to get the points from.
              * @param quantity The amount of points to return. If a falsey value the quantity will be derived from the `stepRate` instead.
@@ -36373,7 +36373,7 @@ declare namespace Phaser {
             getPoint<O extends Phaser.Geom.Point>(position: number, out?: O): O;
 
             /**
-             * Returns an array of Point components containing the coordinates of the points around the circumference of the Ellipse,
+             * Returns an array of Point objects containing the coordinates of the points around the circumference of the Ellipse,
              * based on the given quantity or stepRate values.
              * @param quantity The amount of points to return. If a falsey value the quantity will be derived from the `stepRate` instead.
              * @param stepRate Sets the quantity by getting the circumference of the ellipse and dividing it by the stepRate.
@@ -36478,7 +36478,7 @@ declare namespace Phaser {
             static GetPoint<O extends Phaser.Geom.Point>(ellipse: Phaser.Geom.Ellipse, position: number, out?: O): O;
 
             /**
-             * Returns an array of Point components containing the coordinates of the points around the circumference of the Ellipse,
+             * Returns an array of Point objects containing the coordinates of the points around the circumference of the Ellipse,
              * based on the given quantity or stepRate values.
              * @param ellipse The Ellipse to get the points from.
              * @param quantity The amount of points to return. If a falsey value the quantity will be derived from the `stepRate` instead.
@@ -36758,7 +36758,7 @@ declare namespace Phaser {
              * @param line The line.
              * @param quantity The number of points to place on the line. Set to `0` to use `stepRate` instead.
              * @param stepRate The distance between each point on the line. When set, `quantity` is implied and should be set to `0`.
-             * @param out An optional array of Points, or point-like components, to store the coordinates of the points on the line.
+             * @param out An optional array of Points, or point-like objects, to store the coordinates of the points on the line.
              */
             static GetPoints<O extends Phaser.Geom.Point[]>(line: Phaser.Geom.Line, quantity: integer, stepRate?: number, out?: O): O;
 
@@ -36817,7 +36817,7 @@ declare namespace Phaser {
              * providing a `stepRate`.
              * @param quantity The number of points to place on the line. Set to `0` to use `stepRate` instead.
              * @param stepRate The distance between each point on the line. When set, `quantity` is implied and should be set to `0`.
-             * @param output An optional array of Points, or point-like components, to store the coordinates of the points on the line.
+             * @param output An optional array of Points, or point-like objects, to store the coordinates of the points on the line.
              */
             getPoints<O extends Phaser.Geom.Point>(quantity: integer, stepRate?: integer, output?: O): O;
 
@@ -36996,7 +36996,7 @@ declare namespace Phaser {
             static CopyFrom<O extends Phaser.Geom.Point>(source: Phaser.Geom.Point, dest: O): O;
 
             /**
-             * A comparison of two `Point` components to see if they are equal.
+             * A comparison of two `Point` objects to see if they are equal.
              * @param point The original `Point` to compare against.
              * @param toCompare The second `Point` to compare.
              */
@@ -37113,8 +37113,8 @@ declare namespace Phaser {
              * 
              * @param points List of points defining the perimeter of this Polygon. Several formats are supported: 
              * - A string containing paired x y values separated by a single space: `'40 0 40 20 100 20 100 80 40 80 40 100 0 50'`
-             * - An array of Point components: `[new Phaser.Point(x1, y1), ...]`
-             * - An array of components with public x y properties: `[obj1, obj2, ...]`
+             * - An array of Point objects: `[new Phaser.Point(x1, y1), ...]`
+             * - An array of objects with public x y properties: `[obj1, obj2, ...]`
              * - An array of paired numbers that represent point coordinates: `[x1,y1, x2,y2, ...]`
              * - An array of arrays with two elements representing x/y coordinates: `[[x1, y1], [x2, y2], ...]`
              */
@@ -37158,7 +37158,7 @@ declare namespace Phaser {
             static GetNumberArray<O extends number[]>(polygon: Phaser.Geom.Polygon, output?: O): O;
 
             /**
-             * Returns an array of Point components containing the coordinates of the points around the perimeter of the Polygon,
+             * Returns an array of Point objects containing the coordinates of the points around the perimeter of the Polygon,
              * based on the given quantity or stepRate values.
              * @param polygon The Polygon to get the points from.
              * @param quantity The amount of points to return. If a falsey value the quantity will be derived from the `stepRate` instead.
@@ -37179,7 +37179,7 @@ declare namespace Phaser {
             area: number;
 
             /**
-             * An array of number pair components that make up this polygon. I.e. [ {x,y}, {x,y}, {x,y} ]
+             * An array of number pair objects that make up this polygon. I.e. [ {x,y}, {x,y}, {x,y} ]
              */
             points: Phaser.Geom.Point[];
 
@@ -37196,8 +37196,8 @@ declare namespace Phaser {
              * The points can be set from a variety of formats:
              * 
              * - A string containing paired values separated by a single space: `'40 0 40 20 100 20 100 80 40 80 40 100 0 50'`
-             * - An array of Point components: `[new Phaser.Point(x1, y1), ...]`
-             * - An array of components with public x/y properties: `[obj1, obj2, ...]`
+             * - An array of Point objects: `[new Phaser.Point(x1, y1), ...]`
+             * - An array of objects with public x/y properties: `[obj1, obj2, ...]`
              * - An array of paired numbers that represent point coordinates: `[x1,y1, x2,y2, ...]`
              * - An array of arrays with two elements representing x/y coordinates: `[[x1, y1], [x2, y2], ...]`
              * 
@@ -37212,7 +37212,7 @@ declare namespace Phaser {
             calculateArea(): number;
 
             /**
-             * Returns an array of Point components containing the coordinates of the points around the perimeter of the Polygon,
+             * Returns an array of Point objects containing the coordinates of the points around the perimeter of the Polygon,
              * based on the given quantity or stepRate values.
              * @param quantity The amount of points to return. If a falsey value the quantity will be derived from the `stepRate` instead.
              * @param stepRate Sets the quantity by getting the perimeter of the Polygon and dividing it by the stepRate.
@@ -37649,7 +37649,7 @@ declare namespace Phaser {
             centerY: number;
 
             /**
-             * Determines if the two components (either Rectangles or Rectangle-like) have the same width and height values under strict equality.
+             * Determines if the two objects (either Rectangles or Rectangle-like) have the same width and height values under strict equality.
              * @param rect The first Rectangle object.
              * @param toCompare The second Rectangle object.
              */
@@ -37775,10 +37775,10 @@ declare namespace Phaser {
             static Contains(triangle: Phaser.Geom.Triangle, x: number, y: number): boolean;
 
             /**
-             * Filters an array of point-like components to only those contained within a triangle.
+             * Filters an array of point-like objects to only those contained within a triangle.
              * If `returnFirst` is true, will return an array containing only the first point in the provided array that is within the triangle (or an empty array if there are no such points).
              * @param triangle The triangle that the points are being checked in.
-             * @param points An array of point-like components (components that have an `x` and `y` property)
+             * @param points An array of point-like objects (objects that have an `x` and `y` property)
              * @param returnFirst If `true`, return an array containing only the first point found that is within the triangle. Default false.
              * @param out If provided, the points that are within the triangle will be appended to this array instead of being added to a new array. If `returnFirst` is true, only the first point found within the triangle will be appended. This array will also be returned by this function.
              */
@@ -38775,7 +38775,7 @@ declare namespace Phaser {
         namespace Gamepad {
             /**
              * Contains information about a specific Gamepad Axis.
-             * Axis components are created automatically by the Gamepad as they are needed.
+             * Axis objects are created automatically by the Gamepad as they are needed.
              */
             class Axis {
                 /**
@@ -38825,7 +38825,7 @@ declare namespace Phaser {
 
             /**
              * Contains information about a specific button on a Gamepad.
-             * Button components are created automatically by the Gamepad as they are needed.
+             * Button objects are created automatically by the Gamepad as they are needed.
              */
             class Button {
                 /**
@@ -39011,12 +39011,12 @@ declare namespace Phaser {
                 index: number;
 
                 /**
-                 * An array of Gamepad Button components, corresponding to the different buttons available on the Gamepad.
+                 * An array of Gamepad Button objects, corresponding to the different buttons available on the Gamepad.
                  */
                 buttons: Phaser.Input.Gamepad.Button[];
 
                 /**
-                 * An array of Gamepad Axis components, corresponding to the different axes available on the Gamepad, if any.
+                 * An array of Gamepad Axis objects, corresponding to the different axes available on the Gamepad, if any.
                  */
                 axes: Phaser.Input.Gamepad.Axis[];
 
@@ -39435,7 +39435,7 @@ declare namespace Phaser {
             pointers: Phaser.Input.Pointer[];
 
             /**
-             * The number of touch components activated and being processed each update.
+             * The number of touch objects activated and being processed each update.
              * 
              * You can change this by either calling `addPointer` at run-time, or by
              * setting the `input.activePointers` property in the Game Config.
@@ -39527,9 +39527,9 @@ declare namespace Phaser {
             setDefaultCursor(cursor: string): void;
 
             /**
-             * Adds new Pointer components to the Input Manager.
+             * Adds new Pointer objects to the Input Manager.
              * 
-             * By default Phaser creates 2 pointer components: `mousePointer` and `pointer1`.
+             * By default Phaser creates 2 pointer objects: `mousePointer` and `pointer1`.
              * 
              * You can create more either by calling this method, or by setting the `input.activePointers` property
              * in the Game Config, up to a maximum of 10 pointers.
@@ -39873,7 +39873,7 @@ declare namespace Phaser {
              * The state will be one of the following:
              * 
              * 0 = Not dragging anything
-             * 1 = Primary button down and components below, so collect a draglist
+             * 1 = Primary button down and objects below, so collect a draglist
              * 2 = Pointer being checked if meets drag criteria
              * 3 = Pointer meets criteria, notify the draglist
              * 4 = Pointer actively dragging the draglist and has moved
@@ -39888,7 +39888,7 @@ declare namespace Phaser {
              * The state must be one of the following values:
              * 
              * 0 = Not dragging anything
-             * 1 = Primary button down and components below, so collect a draglist
+             * 1 = Primary button down and objects below, so collect a draglist
              * 2 = Pointer being checked if meets drag criteria
              * 3 = Pointer meets criteria, notify the draglist
              * 4 = Pointer actively dragging the draglist and has moved
@@ -39948,7 +39948,7 @@ declare namespace Phaser {
              * to calculate.
              * 
              * The hit area callback is the function that takes an `x` and `y` coordinate and returns a boolean if
-             * those values fall within the area of the shape or not. All of the Phaser geometry components provide this,
+             * those values fall within the area of the shape or not. All of the Phaser geometry objects provide this,
              * such as `Phaser.Geom.Rectangle.Contains`.
              * @param gameObjects An array of Game Objects to set the hit area on.
              * @param shape Either an input configuration object, or a geometric shape that defines the hit area for the Game Object. If not specified a Rectangle will be used.
@@ -40019,9 +40019,9 @@ declare namespace Phaser {
              * When a pointer is polled it runs a hit test to see which Game Objects are currently below it,
              * or being interacted with it, regardless if the Pointer has actually moved or not.
              * 
-             * You should enable this if you want components in your game to fire over / out events, and the components
+             * You should enable this if you want objects in your game to fire over / out events, and the objects
              * are constantly moving, but the pointer may not have. Polling every frame has additional computation
-             * costs, especially if there are a large number of interactive components in your game.
+             * costs, especially if there are a large number of interactive objects in your game.
              */
             setPollAlways(): Phaser.Input.InputPlugin;
 
@@ -40059,7 +40059,7 @@ declare namespace Phaser {
             setTopOnly(value: boolean): Phaser.Input.InputPlugin;
 
             /**
-             * Given an array of Game Objects, sort the array and return it, so that the components are in depth index order
+             * Given an array of Game Objects, sort the array and return it, so that the objects are in depth index order
              * with the lowest at the bottom.
              * @param gameObjects An array of Game Objects to be sorted.
              */
@@ -40161,9 +40161,9 @@ declare namespace Phaser {
             addMoveCallback(callback: Function, isOnce?: boolean): this;
 
             /**
-             * Adds new Pointer components to the Input Manager.
+             * Adds new Pointer objects to the Input Manager.
              * 
-             * By default Phaser creates 2 pointer components: `mousePointer` and `pointer1`.
+             * By default Phaser creates 2 pointer objects: `mousePointer` and `pointer1`.
              * 
              * You can create more either by calling this method, or by setting the `input.activePointers` property
              * in the Game Config, up to a maximum of 10 pointers.
@@ -40288,7 +40288,7 @@ declare namespace Phaser {
 
             /**
              * An instance of the Keyboard Plugin class, if enabled via the `input.keyboard` Scene or Game Config property.
-             * Use this to create Key components and listen for keyboard specific events.
+             * Use this to create Key objects and listen for keyboard specific events.
              */
             keyboard: Phaser.Input.Keyboard.KeyboardPlugin;
 
@@ -40308,7 +40308,7 @@ declare namespace Phaser {
              */
             draggable?: boolean;
             /**
-             * If `true` the Interactive Object will be set to be a drop zone for draggable components.
+             * If `true` the Interactive Object will be set to be a drop zone for draggable objects.
              */
             dropZone?: boolean;
             /**
@@ -40364,7 +40364,7 @@ declare namespace Phaser {
              * 
              * A string (i.e. 'ATARI')
              * An array of either integers (key codes) or strings, or a mixture of both
-             * An array of components (such as Key components) with a public 'keyCode' property
+             * An array of objects (such as Key objects) with a public 'keyCode' property
              * 
              * For example, to listen for the Konami code (up, up, down, down, left, right, left, right, b, a, enter)
              * you could pass the following array of key codes:
@@ -40479,7 +40479,7 @@ declare namespace Phaser {
                  * 
                  * You can also listen for a specific key being pressed. See [Keyboard.Events.KEY_DOWN]{@linkcode Phaser.Input.Keyboard.Events#event:KEY_DOWN} for details.
                  * 
-                 * Finally, you can create Key components, which you can also listen for events from. See [Keyboard.Events.DOWN]{@linkcode Phaser.Input.Keyboard.Events#event:DOWN} for details.
+                 * Finally, you can create Key objects, which you can also listen for events from. See [Keyboard.Events.DOWN]{@linkcode Phaser.Input.Keyboard.Events#event:DOWN} for details.
                  * 
                  * _Note_: Many keyboards are unable to process certain combinations of keys due to hardware limitations known as ghosting.
                  * Read [this article on ghosting]{@link http://www.html5gamedevs.com/topic/4876-impossible-to-use-more-than-2-keyboard-input-buttons-at-the-same-time/} for details.
@@ -40499,7 +40499,7 @@ declare namespace Phaser {
                  * 
                  * You can also listen for a specific key being released. See [Keyboard.Events.KEY_UP]{@linkcode Phaser.Input.Keyboard.Events#event:KEY_UP} for details.
                  * 
-                 * Finally, you can create Key components, which you can also listen for events from. See [Keyboard.Events.UP]{@linkcode Phaser.Input.Keyboard.Events#event:UP} for details.
+                 * Finally, you can create Key objects, which you can also listen for events from. See [Keyboard.Events.UP]{@linkcode Phaser.Input.Keyboard.Events#event:UP} for details.
                  */
                 const ANY_KEY_UP: any;
 
@@ -40549,7 +40549,7 @@ declare namespace Phaser {
                  * 
                  * You can also create a generic 'global' listener. See [Keyboard.Events.ANY_KEY_DOWN]{@linkcode Phaser.Input.Keyboard.Events#event:ANY_KEY_DOWN} for details.
                  * 
-                 * Finally, you can create Key components, which you can also listen for events from. See [Keyboard.Events.DOWN]{@linkcode Phaser.Input.Keyboard.Events#event:DOWN} for details.
+                 * Finally, you can create Key objects, which you can also listen for events from. See [Keyboard.Events.DOWN]{@linkcode Phaser.Input.Keyboard.Events#event:DOWN} for details.
                  * 
                  * _Note_: Many keyboards are unable to process certain combinations of keys due to hardware limitations known as ghosting.
                  * Read [this article on ghosting]{@link http://www.html5gamedevs.com/topic/4876-impossible-to-use-more-than-2-keyboard-input-buttons-at-the-same-time/} for details.
@@ -40572,7 +40572,7 @@ declare namespace Phaser {
                  * 
                  * You can also create a generic 'global' listener. See [Keyboard.Events.ANY_KEY_UP]{@linkcode Phaser.Input.Keyboard.Events#event:ANY_KEY_UP} for details.
                  * 
-                 * Finally, you can create Key components, which you can also listen for events from. See [Keyboard.Events.UP]{@linkcode Phaser.Input.Keyboard.Events#event:UP} for details.
+                 * Finally, you can create Key objects, which you can also listen for events from. See [Keyboard.Events.UP]{@linkcode Phaser.Input.Keyboard.Events#event:UP} for details.
                  */
                 const KEY_UP: any;
 
@@ -40645,7 +40645,7 @@ declare namespace Phaser {
                  * If you wish to stop capturing the keys, for example switching out to a DOM based element, then
                  * you can toggle the `KeyboardManager.preventDefault` boolean at run-time.
                  * 
-                 * If you need more specific control, you can create Key components and set the flag on each of those instead.
+                 * If you need more specific control, you can create Key objects and set the flag on each of those instead.
                  * 
                  * This array can be populated via the Game Config by setting the `input.keyboard.capture` array, or you
                  * can call the `addCapture` method. See also `removeCapture` and `clearCaptures`.
@@ -40791,7 +40791,7 @@ declare namespace Phaser {
              * this.input.keyboard.on('keydown-A', callback, context);
              * ```
              * 
-             * You can also create Key components, which you can then poll in your game loop:
+             * You can also create Key objects, which you can then poll in your game loop:
              * 
              * ```javascript
              * var spaceBar = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
@@ -40847,12 +40847,12 @@ declare namespace Phaser {
                 enabled: boolean;
 
                 /**
-                 * An array of Key components to process.
+                 * An array of Key objects to process.
                  */
                 keys: Phaser.Input.Keyboard.Key[];
 
                 /**
-                 * An array of KeyCombo components to process.
+                 * An array of KeyCombo objects to process.
                  */
                 combos: Phaser.Input.Keyboard.KeyCombo[];
 
@@ -40965,7 +40965,7 @@ declare namespace Phaser {
                  * this.input.keyboard.addKeys({ 'up': Phaser.Input.Keyboard.KeyCodes.W, 'down': Phaser.Input.Keyboard.KeyCodes.S });
                  * ```
                  * 
-                 * would return an object containing the properties (`up` and `down`) mapped to W and S {@link Phaser.Input.Keyboard.Key} components.
+                 * would return an object containing the properties (`up` and `down`) mapped to W and S {@link Phaser.Input.Keyboard.Key} objects.
                  * 
                  * You can also pass in a comma-separated string:
                  * 
@@ -40973,7 +40973,7 @@ declare namespace Phaser {
                  * this.input.keyboard.addKeys('W,S,A,D');
                  * ```
                  * 
-                 * Which will return an object with the properties W, S, A and D mapped to the relevant Key components.
+                 * Which will return an object with the properties W, S, A and D mapped to the relevant Key objects.
                  * 
                  * To use non-alpha numeric keys, use a string, such as 'UP', 'SPACE' or 'LEFT'.
                  * @param keys An object containing Key Codes, or a comma-separated string.
@@ -41012,7 +41012,7 @@ declare namespace Phaser {
                  * 
                  * A string (i.e. 'ATARI')
                  * An array of either integers (key codes) or strings, or a mixture of both
-                 * An array of components (such as Key components) with a public 'keyCode' property
+                 * An array of objects (such as Key objects) with a public 'keyCode' property
                  * 
                  * For example, to listen for the Konami code (up, up, down, down, left, right, left, right, b, a, enter)
                  * you could pass the following array of key codes:
@@ -41050,7 +41050,7 @@ declare namespace Phaser {
                 checkDown(key: Phaser.Input.Keyboard.Key, duration?: number): boolean;
 
                 /**
-                 * Resets all Key components created by _this_ Keyboard Plugin back to their default un-pressed states.
+                 * Resets all Key objects created by _this_ Keyboard Plugin back to their default un-pressed states.
                  * This can only reset keys created via the `addKey`, `addKeys` or `createCursorKeys` methods.
                  * If you have created a Key object directly you'll need to reset it yourself.
                  * 
@@ -41646,32 +41646,32 @@ declare namespace Phaser {
             moveTime: number;
 
             /**
-             * X coordinate of the Pointer when Button 1 (left button), or Touch, was pressed, used for dragging components.
+             * X coordinate of the Pointer when Button 1 (left button), or Touch, was pressed, used for dragging objects.
              */
             downX: number;
 
             /**
-             * Y coordinate of the Pointer when Button 1 (left button), or Touch, was pressed, used for dragging components.
+             * Y coordinate of the Pointer when Button 1 (left button), or Touch, was pressed, used for dragging objects.
              */
             downY: number;
 
             /**
-             * Time when Button 1 (left button), or Touch, was pressed, used for dragging components.
+             * Time when Button 1 (left button), or Touch, was pressed, used for dragging objects.
              */
             downTime: number;
 
             /**
-             * X coordinate of the Pointer when Button 1 (left button), or Touch, was released, used for dragging components.
+             * X coordinate of the Pointer when Button 1 (left button), or Touch, was released, used for dragging objects.
              */
             upX: number;
 
             /**
-             * Y coordinate of the Pointer when Button 1 (left button), or Touch, was released, used for dragging components.
+             * Y coordinate of the Pointer when Button 1 (left button), or Touch, was released, used for dragging objects.
              */
             upY: number;
 
             /**
-             * Time when Button 1 (left button), or Touch, was released, used for dragging components.
+             * Time when Button 1 (left button), or Touch, was released, used for dragging objects.
              */
             upTime: number;
 
@@ -44305,7 +44305,7 @@ declare namespace Phaser {
              * 
              * Note: The ability to load this type of file will only be available if the Audio Sprite File type has been built into Phaser.
              * It is available in the default build but can be excluded from custom builds.
-             * @param key The key to use for this file, or a file configuration object, or an array of components.
+             * @param key The key to use for this file, or a file configuration object, or an array of objects.
              * @param jsonURL The absolute or relative URL to load the json file from. Or a well formed JSON object to use instead.
              * @param audioURL The absolute or relative URL to load the audio file from. If empty it will be obtained by parsing the JSON file.
              * @param audioConfig The audio configuration options.
@@ -47084,7 +47084,7 @@ declare namespace Phaser {
             /**
              * Apply a scale transformation to this Matrix.
              * 
-             * Uses the `x` and `y` components of the given Vector to scale the Matrix.
+             * Uses the `x` and `y` objects of the given Vector to scale the Matrix.
              * @param v The Vector to scale this Matrix with.
              */
             scale(v: Phaser.Math.Vector2 | Phaser.Math.Vector3 | Phaser.Math.Vector4): Phaser.Math.Matrix3;
@@ -47218,7 +47218,7 @@ declare namespace Phaser {
             /**
              * Apply a scale transformation to this Matrix.
              * 
-             * Uses the `x`, `y` and `z` components of the given Vector to scale the Matrix.
+             * Uses the `x`, `y` and `z` objects of the given Vector to scale the Matrix.
              * @param v The Vector to scale this Matrix with.
              */
             scale(v: Phaser.Math.Vector3 | Phaser.Math.Vector4): Phaser.Math.Matrix4;
@@ -47429,14 +47429,14 @@ declare namespace Phaser {
             w: number;
 
             /**
-             * Copy the components of a given Quaternion or Vector into this Quaternion.
-             * @param src The Quaternion or Vector to copy the components from.
+             * Copy the objects of a given Quaternion or Vector into this Quaternion.
+             * @param src The Quaternion or Vector to copy the objects from.
              */
             copy(src: Phaser.Math.Quaternion | Phaser.Math.Vector4): Phaser.Math.Quaternion;
 
             /**
-             * Set the components of this Quaternion.
-             * @param x The x component, or an object containing x, y, z, and w components. Default 0.
+             * Set the objects of this Quaternion.
+             * @param x The x component, or an object containing x, y, z, and w objects. Default 0.
              * @param y The y component. Default 0.
              * @param z The z component. Default 0.
              * @param w The w component. Default 0.
@@ -47537,7 +47537,7 @@ declare namespace Phaser {
             /**
              * Convert this Quaternion into its conjugate.
              * 
-             * Sets the x, y and z components.
+             * Sets the x, y and z objects.
              */
             conjugate(): Phaser.Math.Quaternion;
 
@@ -47560,7 +47560,7 @@ declare namespace Phaser {
             rotateZ(rad: number): Phaser.Math.Quaternion;
 
             /**
-             * Create a unit (or rotation) Quaternion from its x, y, and z components.
+             * Create a unit (or rotation) Quaternion from its x, y, and z objects.
              * 
              * Sets the w component.
              */
@@ -47915,8 +47915,8 @@ declare namespace Phaser {
             clone(): Phaser.Math.Vector2;
 
             /**
-             * Copy the components of a given Vector into this Vector.
-             * @param src The Vector to copy the components from.
+             * Copy the objects of a given Vector into this Vector.
+             * @param src The Vector to copy the objects from.
              */
             copy(src: Phaser.Math.Vector2): Phaser.Math.Vector2;
 
@@ -47927,7 +47927,7 @@ declare namespace Phaser {
             setFromObject(obj: Vector2Like): Phaser.Math.Vector2;
 
             /**
-             * Set the `x` and `y` components of the this Vector to the given `x` and `y` values.
+             * Set the `x` and `y` objects of the this Vector to the given `x` and `y` values.
              * @param x The x value to set for this Vector.
              * @param y The y value to set for this Vector. Default x.
              */
@@ -47950,7 +47950,7 @@ declare namespace Phaser {
             /**
              * Check whether this Vector is equal to a given Vector.
              * 
-             * Performs a strict equality check against each Vector's components.
+             * Performs a strict equality check against each Vector's objects.
              * @param v The vector to compare with this Vector.
              */
             equals(v: Phaser.Math.Vector2): boolean;
@@ -47995,7 +47995,7 @@ declare namespace Phaser {
             divide(src: Phaser.Math.Vector2): Phaser.Math.Vector2;
 
             /**
-             * Negate the `x` and `y` components of this Vector.
+             * Negate the `x` and `y` objects of this Vector.
              */
             negate(): Phaser.Math.Vector2;
 
@@ -48166,20 +48166,20 @@ declare namespace Phaser {
             /**
              * Check whether this Vector is equal to a given Vector.
              * 
-             * Performs a strict equality check against each Vector's components.
+             * Performs a strict equality check against each Vector's objects.
              * @param v The Vector3 to compare against.
              */
             equals(v: Phaser.Math.Vector3): boolean;
 
             /**
-             * Copy the components of a given Vector into this Vector.
-             * @param src The Vector to copy the components from.
+             * Copy the objects of a given Vector into this Vector.
+             * @param src The Vector to copy the objects from.
              */
             copy(src: Phaser.Math.Vector2 | Phaser.Math.Vector3): Phaser.Math.Vector3;
 
             /**
-             * Set the `x`, `y`, and `z` components of this Vector to the given `x`, `y`, and `z` values.
-             * @param x The x value to set for this Vector, or an object containing x, y and z components.
+             * Set the `x`, `y`, and `z` objects of this Vector to the given `x`, `y`, and `z` values.
+             * @param x The x value to set for this Vector, or an object containing x, y and z objects.
              * @param y The y value to set for this Vector.
              * @param z The z value to set for this Vector.
              */
@@ -48220,7 +48220,7 @@ declare namespace Phaser {
             divide(v: Phaser.Math.Vector2 | Phaser.Math.Vector3): Phaser.Math.Vector3;
 
             /**
-             * Negate the `x`, `y` and `z` components of this Vector.
+             * Negate the `x`, `y` and `z` objects of this Vector.
              */
             negate(): Phaser.Math.Vector3;
 
@@ -48312,7 +48312,7 @@ declare namespace Phaser {
              * or 1 (far plane). The provided matrix is assumed to already
              * be combined, i.e. projection * view * model.
              * 
-             * After this operation, this vector's (x, y, z) components will
+             * After this operation, this vector's (x, y, z) objects will
              * represent the unprojected 3D coordinate.
              * @param viewport Screen x, y, width and height in pixels.
              * @param invProjectionView Combined projection and view matrix.
@@ -48423,22 +48423,22 @@ declare namespace Phaser {
             clone(): Phaser.Math.Vector4;
 
             /**
-             * Copy the components of a given Vector into this Vector.
-             * @param src The Vector to copy the components from.
+             * Copy the objects of a given Vector into this Vector.
+             * @param src The Vector to copy the objects from.
              */
             copy(src: Phaser.Math.Vector4): Phaser.Math.Vector4;
 
             /**
              * Check whether this Vector is equal to a given Vector.
              * 
-             * Performs a strict quality check against each Vector's components.
+             * Performs a strict quality check against each Vector's objects.
              * @param v The vector to check equality with.
              */
             equals(v: Phaser.Math.Vector4): boolean;
 
             /**
-             * Set the `x`, `y`, `z` and `w` components of the this Vector to the given `x`, `y`, `z` and `w` values.
-             * @param x The x value to set for this Vector, or an object containing x, y, z and w components.
+             * Set the `x`, `y`, `z` and `w` objects of the this Vector to the given `x`, `y`, `z` and `w` values.
+             * @param x The x value to set for this Vector, or an object containing x, y, z and w objects.
              * @param y The y value to set for this Vector.
              * @param z The z value to set for this Vector.
              * @param w The z value to set for this Vector.
@@ -48524,7 +48524,7 @@ declare namespace Phaser {
             distanceSq(v: Phaser.Math.Vector2 | Phaser.Math.Vector3 | Phaser.Math.Vector4): number;
 
             /**
-             * Negate the `x`, `y`, `z` and `w` components of this Vector.
+             * Negate the `x`, `y`, `z` and `w` objects of this Vector.
              */
             negate(): Phaser.Math.Vector4;
 
@@ -48568,7 +48568,7 @@ declare namespace Phaser {
     namespace Physics {
         namespace Arcade {
             /**
-             * An Arcade Physics Image is an Image with an Arcade Physics body and related components.
+             * An Arcade Physics Image is an Image with an Arcade Physics body and related objects.
              * The body can be dynamic or static.
              * 
              * The main difference between an Arcade Image and an Arcade Sprite is that you cannot animate an Arcade Image.
@@ -49516,7 +49516,7 @@ declare namespace Phaser {
                  * 
                  * Drag can be considered as a form of deceleration that will return the velocity of a body back to zero over time.
                  * It is the absolute loss of velocity due to movement, in pixels per second squared.
-                 * The x and y components are applied separately.
+                 * The x and y objects are applied separately.
                  * 
                  * When `useDamping` is true, this is 1 minus the damping factor.
                  * A value of 1 means the Body loses no velocity.
@@ -49534,7 +49534,7 @@ declare namespace Phaser {
                  * 
                  * Drag can be considered as a form of deceleration that will return the velocity of a body back to zero over time.
                  * It is the absolute loss of velocity due to movement, in pixels per second squared.
-                 * The x and y components are applied separately.
+                 * The x and y objects are applied separately.
                  * 
                  * When `useDamping` is true, this is 1 minus the damping factor.
                  * A value of 1 means the Body loses no velocity.
@@ -49551,7 +49551,7 @@ declare namespace Phaser {
                  * 
                  * Drag can be considered as a form of deceleration that will return the velocity of a body back to zero over time.
                  * It is the absolute loss of velocity due to movement, in pixels per second squared.
-                 * The x and y components are applied separately.
+                 * The x and y objects are applied separately.
                  * 
                  * When `useDamping` is true, this is 1 minus the damping factor.
                  * A value of 1 means the Body loses no velocity.
@@ -49729,7 +49729,7 @@ declare namespace Phaser {
                 systems: Phaser.Scenes.Systems;
 
                 /**
-                 * A configuration object. Union of the `physics.arcade.*` properties of the GameConfig and SceneConfig components.
+                 * A configuration object. Union of the `physics.arcade.*` properties of the GameConfig and SceneConfig objects.
                  */
                 config: object;
 
@@ -49750,20 +49750,20 @@ declare namespace Phaser {
 
                 /**
                  * Tests if Game Objects overlap. See {@link Phaser.Physics.Arcade.World#overlap}
-                 * @param object1 The first object or array of components to check.
-                 * @param object2 The second object or array of components to check, or `undefined`.
-                 * @param collideCallback An optional callback function that is called if the components collide.
-                 * @param processCallback An optional callback function that lets you perform additional checks against the two components if they overlap. If this is set then `collideCallback` will only be called if this callback returns `true`.
+                 * @param object1 The first object or array of objects to check.
+                 * @param object2 The second object or array of objects to check, or `undefined`.
+                 * @param collideCallback An optional callback function that is called if the objects collide.
+                 * @param processCallback An optional callback function that lets you perform additional checks against the two objects if they overlap. If this is set then `collideCallback` will only be called if this callback returns `true`.
                  * @param callbackContext The context in which to run the callbacks.
                  */
                 overlap(object1: ArcadeColliderType, object2?: ArcadeColliderType, collideCallback?: ArcadePhysicsCallback, processCallback?: ArcadePhysicsCallback, callbackContext?: any): boolean;
 
                 /**
                  * Tests if Game Objects overlap and separates them (if possible). See {@link Phaser.Physics.Arcade.World#collide}.
-                 * @param object1 The first object or array of components to check.
-                 * @param object2 The second object or array of components to check, or `undefined`.
-                 * @param collideCallback An optional callback function that is called if the components collide.
-                 * @param processCallback An optional callback function that lets you perform additional checks against the two components if they collide. If this is set then `collideCallback` will only be called if this callback returns `true`.
+                 * @param object1 The first object or array of objects to check.
+                 * @param object2 The second object or array of objects to check, or `undefined`.
+                 * @param collideCallback An optional callback function that is called if the objects collide.
+                 * @param processCallback An optional callback function that lets you perform additional checks against the two objects if they collide. If this is set then `collideCallback` will only be called if this callback returns `true`.
                  * @param callbackContext The context in which to run the callbacks.
                  */
                 collide(object1: ArcadeColliderType, object2?: ArcadeColliderType, collideCallback?: ArcadePhysicsCallback, processCallback?: ArcadePhysicsCallback, callbackContext?: any): boolean;
@@ -49883,7 +49883,7 @@ declare namespace Phaser {
             }
 
             /**
-             * An Arcade Physics Sprite is a Sprite with an Arcade Physics body and related components.
+             * An Arcade Physics Sprite is a Sprite with an Arcade Physics body and related objects.
              * The body can be dynamic or static.
              * 
              * The main difference between an Arcade Sprite and an Arcade Image is that you cannot animate an Arcade Image.
@@ -50832,7 +50832,7 @@ declare namespace Phaser {
                  * 
                  * Drag can be considered as a form of deceleration that will return the velocity of a body back to zero over time.
                  * It is the absolute loss of velocity due to movement, in pixels per second squared.
-                 * The x and y components are applied separately.
+                 * The x and y objects are applied separately.
                  * 
                  * When `useDamping` is true, this is 1 minus the damping factor.
                  * A value of 1 means the Body loses no velocity.
@@ -50850,7 +50850,7 @@ declare namespace Phaser {
                  * 
                  * Drag can be considered as a form of deceleration that will return the velocity of a body back to zero over time.
                  * It is the absolute loss of velocity due to movement, in pixels per second squared.
-                 * The x and y components are applied separately.
+                 * The x and y objects are applied separately.
                  * 
                  * When `useDamping` is true, this is 1 minus the damping factor.
                  * A value of 1 means the Body loses no velocity.
@@ -50867,7 +50867,7 @@ declare namespace Phaser {
                  * 
                  * Drag can be considered as a form of deceleration that will return the velocity of a body back to zero over time.
                  * It is the absolute loss of velocity due to movement, in pixels per second squared.
-                 * The x and y components are applied separately.
+                 * The x and y objects are applied separately.
                  * 
                  * When `useDamping` is true, this is 1 minus the damping factor.
                  * A value of 1 means the Body loses no velocity.
@@ -51179,7 +51179,7 @@ declare namespace Phaser {
 
                 /**
                  * Absolute loss of velocity due to movement, in pixels per second squared.
-                 * The x and y components are applied separately.
+                 * The x and y objects are applied separately.
                  * 
                  * When `useDamping` is true, this is 1 minus the damping factor.
                  * A value of 1 means the Body loses no velocity.
@@ -51229,7 +51229,7 @@ declare namespace Phaser {
 
                 /**
                  * The Body's absolute maximum velocity, in pixels per second.
-                 * The horizontal and vertical components are applied separately.
+                 * The horizontal and vertical objects are applied separately.
                  */
                 maxVelocity: Phaser.Math.Vector2;
 
@@ -51752,7 +51752,7 @@ declare namespace Phaser {
             }
 
             /**
-             * An Arcade Physics Collider will automatically check for collision, or overlaps, between two components
+             * An Arcade Physics Collider will automatically check for collision, or overlaps, between two objects
              * every step. If a collision, or overlap, occurs it will invoke the given callbacks.
              */
             class Collider {
@@ -51762,8 +51762,8 @@ declare namespace Phaser {
                  * @param overlapOnly Whether to check for collisions or overlap.
                  * @param object1 The first object to check for collision.
                  * @param object2 The second object to check for collision.
-                 * @param collideCallback The callback to invoke when the two components collide.
-                 * @param processCallback The callback to invoke when the two components collide. Must return a boolean.
+                 * @param collideCallback The callback to invoke when the two objects collide.
+                 * @param processCallback The callback to invoke when the two objects collide. Must return a boolean.
                  * @param callbackContext The scope in which to call the callbacks.
                  */
                 constructor(world: Phaser.Physics.Arcade.World, overlapOnly: boolean, object1: ArcadeColliderType, object2: ArcadeColliderType, collideCallback: ArcadePhysicsCallback, processCallback: ArcadePhysicsCallback, callbackContext: any);
@@ -51799,7 +51799,7 @@ declare namespace Phaser {
                 object2: ArcadeColliderType;
 
                 /**
-                 * The callback to invoke when the two components collide.
+                 * The callback to invoke when the two objects collide.
                  */
                 collideCallback: ArcadePhysicsCallback;
 
@@ -51957,7 +51957,7 @@ declare namespace Phaser {
                      * 
                      * Drag can be considered as a form of deceleration that will return the velocity of a body back to zero over time.
                      * It is the absolute loss of velocity due to movement, in pixels per second squared.
-                     * The x and y components are applied separately.
+                     * The x and y objects are applied separately.
                      * 
                      * When `useDamping` is true, this is 1 minus the damping factor.
                      * A value of 1 means the Body loses no velocity.
@@ -51974,7 +51974,7 @@ declare namespace Phaser {
                      * 
                      * Drag can be considered as a form of deceleration that will return the velocity of a body back to zero over time.
                      * It is the absolute loss of velocity due to movement, in pixels per second squared.
-                     * The x and y components are applied separately.
+                     * The x and y objects are applied separately.
                      * 
                      * When `useDamping` is true, this is 1 minus the damping factor.
                      * A value of 1 means the Body loses no velocity.
@@ -51990,7 +51990,7 @@ declare namespace Phaser {
                      * 
                      * Drag can be considered as a form of deceleration that will return the velocity of a body back to zero over time.
                      * It is the absolute loss of velocity due to movement, in pixels per second squared.
-                     * The x and y components are applied separately.
+                     * The x and y objects are applied separately.
                      * 
                      * When `useDamping` is true, this is 1 minus the damping factor.
                      * A value of 1 means the Body loses no velocity.
@@ -52345,8 +52345,8 @@ declare namespace Phaser {
                  * Creates a new Arcade Physics Collider object.
                  * @param object1 The first object to check for collision.
                  * @param object2 The second object to check for collision.
-                 * @param collideCallback The callback to invoke when the two components collide.
-                 * @param processCallback The callback to invoke when the two components collide. Must return a boolean.
+                 * @param collideCallback The callback to invoke when the two objects collide.
+                 * @param processCallback The callback to invoke when the two objects collide. Must return a boolean.
                  * @param callbackContext The scope in which to call the callbacks.
                  */
                 collider(object1: Phaser.GameObjects.GameObject | Phaser.GameObjects.GameObject[] | Phaser.GameObjects.Group | Phaser.GameObjects.Group[], object2: Phaser.GameObjects.GameObject | Phaser.GameObjects.GameObject[] | Phaser.GameObjects.Group | Phaser.GameObjects.Group[], collideCallback?: ArcadePhysicsCallback, processCallback?: ArcadePhysicsCallback, callbackContext?: any): Phaser.Physics.Arcade.Collider;
@@ -52355,8 +52355,8 @@ declare namespace Phaser {
                  * Creates a new Arcade Physics Collider Overlap object.
                  * @param object1 The first object to check for overlap.
                  * @param object2 The second object to check for overlap.
-                 * @param collideCallback The callback to invoke when the two components collide.
-                 * @param processCallback The callback to invoke when the two components collide. Must return a boolean.
+                 * @param collideCallback The callback to invoke when the two objects collide.
+                 * @param processCallback The callback to invoke when the two objects collide. Must return a boolean.
                  * @param callbackContext The scope in which to call the callbacks.
                  */
                 overlap(object1: Phaser.GameObjects.GameObject | Phaser.GameObjects.GameObject[] | Phaser.GameObjects.Group | Phaser.GameObjects.Group[], object2: Phaser.GameObjects.GameObject | Phaser.GameObjects.GameObject[] | Phaser.GameObjects.Group | Phaser.GameObjects.Group[], collideCallback?: ArcadePhysicsCallback, processCallback?: ArcadePhysicsCallback, callbackContext?: any): Phaser.Physics.Arcade.Collider;
@@ -52406,7 +52406,7 @@ declare namespace Phaser {
 
                 /**
                  * Creates a Static Physics Group object.
-                 * All Game Objects created by this Group will automatically be static Arcade Physics components.
+                 * All Game Objects created by this Group will automatically be static Arcade Physics objects.
                  * @param children Game Objects to add to this group; or the `config` argument.
                  * @param config Settings for this group.
                  */
@@ -52414,7 +52414,7 @@ declare namespace Phaser {
 
                 /**
                  * Creates a Physics Group object.
-                 * All Game Objects created by this Group will automatically be dynamic Arcade Physics components.
+                 * All Game Objects created by this Group will automatically be dynamic Arcade Physics objects.
                  * @param children Game Objects to add to this group; or the `config` argument.
                  * @param config Settings for this group.
                  */
@@ -53190,7 +53190,7 @@ declare namespace Phaser {
                  * 
                  * You can specify if the bodies are to be Dynamic or Static. A dynamic body can move via velocity and
                  * acceleration. A static body remains fixed in place and as such is able to use an optimized search
-                 * tree, making it ideal for static elements such as level components. You can still collide and overlap
+                 * tree, making it ideal for static elements such as level objects. You can still collide and overlap
                  * with static bodies.
                  * 
                  * Normally, rather than calling this method directly, you'd use the helper methods available in the
@@ -53204,7 +53204,7 @@ declare namespace Phaser {
                  * Calling factory methods encapsulates the creation of a Game Object and the creation of its
                  * body at the same time. If you are creating custom classes then you can pass them to this
                  * method to have their bodies created.
-                 * @param object The object, or components, on which to create the bodies.
+                 * @param object The object, or objects, on which to create the bodies.
                  * @param bodyType The type of Body to create. Either `DYNAMIC_BODY` or `STATIC_BODY`.
                  */
                 enable(object: Phaser.GameObjects.GameObject | Phaser.GameObjects.GameObject[] | Phaser.GameObjects.Group | Phaser.GameObjects.Group[], bodyType?: integer): void;
@@ -53216,7 +53216,7 @@ declare namespace Phaser {
                  * 
                  * You can specify if the body is Dynamic or Static. A dynamic body can move via velocity and
                  * acceleration. A static body remains fixed in place and as such is able to use an optimized search
-                 * tree, making it ideal for static elements such as level components. You can still collide and overlap
+                 * tree, making it ideal for static elements such as level objects. You can still collide and overlap
                  * with static bodies.
                  * 
                  * Normally, rather than calling this method directly, you'd use the helper methods available in the
@@ -53251,7 +53251,7 @@ declare namespace Phaser {
                  * 
                  * The body itself is not deleted, it just has its `enable` property set to false, which
                  * means you can re-enable it again at any point by passing it to enable `World.enable` or `World.add`.
-                 * @param object The object, or components, on which to disable the bodies.
+                 * @param object The object, or objects, on which to disable the bodies.
                  */
                 disable(object: Phaser.GameObjects.GameObject | Phaser.GameObjects.GameObject[] | Phaser.GameObjects.Group | Phaser.GameObjects.Group[]): void;
 
@@ -53284,7 +53284,7 @@ declare namespace Phaser {
                  * was set to `true`. However, you can call it at any point should you need to display the
                  * debug Graphic from a fixed point.
                  * 
-                 * You can control which components are drawn to the Graphics object, and the colors they use,
+                 * You can control which objects are drawn to the Graphics object, and the colors they use,
                  * by setting the debug properties in the physics config.
                  * 
                  * You should not typically use this in a production game. Use it to aid during debugging.
@@ -53336,7 +53336,7 @@ declare namespace Phaser {
                 /**
                  * Creates a new Collider object and adds it to the simulation.
                  * 
-                 * A Collider is a way to automatically perform collision checks between two components,
+                 * A Collider is a way to automatically perform collision checks between two objects,
                  * calling the collide and process callbacks if they occur.
                  * 
                  * Colliders are run as part of the World update, after all of the Bodies have updated.
@@ -53345,8 +53345,8 @@ declare namespace Phaser {
                  * as it will be handled for you automatically.
                  * @param object1 The first object to check for collision.
                  * @param object2 The second object to check for collision.
-                 * @param collideCallback The callback to invoke when the two components collide.
-                 * @param processCallback The callback to invoke when the two components collide. Must return a boolean.
+                 * @param collideCallback The callback to invoke when the two objects collide.
+                 * @param processCallback The callback to invoke when the two objects collide. Must return a boolean.
                  * @param callbackContext The scope in which to call the callbacks.
                  */
                 addCollider(object1: ArcadeColliderType, object2: ArcadeColliderType, collideCallback?: ArcadePhysicsCallback, processCallback?: ArcadePhysicsCallback, callbackContext?: any): Phaser.Physics.Arcade.Collider;
@@ -53354,7 +53354,7 @@ declare namespace Phaser {
                 /**
                  * Creates a new Overlap Collider object and adds it to the simulation.
                  * 
-                 * A Collider is a way to automatically perform overlap checks between two components,
+                 * A Collider is a way to automatically perform overlap checks between two objects,
                  * calling the collide and process callbacks if they occur.
                  * 
                  * Colliders are run as part of the World update, after all of the Bodies have updated.
@@ -53363,8 +53363,8 @@ declare namespace Phaser {
                  * as it will be handled for you automatically.
                  * @param object1 The first object to check for overlap.
                  * @param object2 The second object to check for overlap.
-                 * @param collideCallback The callback to invoke when the two components overlap.
-                 * @param processCallback The callback to invoke when the two components overlap. Must return a boolean.
+                 * @param collideCallback The callback to invoke when the two objects overlap.
+                 * @param processCallback The callback to invoke when the two objects overlap. Must return a boolean.
                  * @param callbackContext The scope in which to call the callbacks.
                  */
                 addOverlap(object1: ArcadeColliderType, object2: ArcadeColliderType, collideCallback?: ArcadePhysicsCallback, processCallback?: ArcadePhysicsCallback, callbackContext?: any): Phaser.Physics.Arcade.Collider;
@@ -53473,16 +53473,16 @@ declare namespace Phaser {
 
                 /**
                  * Tests if Game Objects overlap.
-                 * @param object1 The first object or array of components to check.
-                 * @param object2 The second object or array of components to check, or `undefined`.
-                 * @param overlapCallback An optional callback function that is called if the components overlap.
-                 * @param processCallback An optional callback function that lets you perform additional checks against the two components if they overlap. If this is set then `overlapCallback` will only be called if this callback returns `true`.
+                 * @param object1 The first object or array of objects to check.
+                 * @param object2 The second object or array of objects to check, or `undefined`.
+                 * @param overlapCallback An optional callback function that is called if the objects overlap.
+                 * @param processCallback An optional callback function that lets you perform additional checks against the two objects if they overlap. If this is set then `overlapCallback` will only be called if this callback returns `true`.
                  * @param callbackContext The context in which to run the callbacks.
                  */
                 overlap(object1: ArcadeColliderType, object2?: ArcadeColliderType, overlapCallback?: ArcadePhysicsCallback, processCallback?: ArcadePhysicsCallback, callbackContext?: any): boolean;
 
                 /**
-                 * Performs a collision check and separation between the two physics enabled components given, which can be single
+                 * Performs a collision check and separation between the two physics enabled objects given, which can be single
                  * Game Objects, arrays of Game Objects, Physics Groups, arrays of Physics Groups or normal Groups.
                  * 
                  * If you don't require separation then use {@link #overlap} instead.
@@ -53492,16 +53492,16 @@ declare namespace Phaser {
                  * If one Group **only** is passed (as `object1`), each member of the Group will be collided against the other members.
                  * 
                  * Two callbacks can be provided. The `collideCallback` is invoked if a collision occurs and the two colliding
-                 * components are passed to it.
+                 * objects are passed to it.
                  * 
                  * Arcade Physics uses the Projection Method of collision resolution and separation. While it's fast and suitable
-                 * for 'arcade' style games it lacks stability when multiple components are in close proximity or resting upon each other.
-                 * The separation that stops two components penetrating may create a new penetration against a different object. If you
+                 * for 'arcade' style games it lacks stability when multiple objects are in close proximity or resting upon each other.
+                 * The separation that stops two objects penetrating may create a new penetration against a different object. If you
                  * require a high level of stability please consider using an alternative physics system, such as Matter.js.
-                 * @param object1 The first object or array of components to check.
-                 * @param object2 The second object or array of components to check, or `undefined`.
-                 * @param collideCallback An optional callback function that is called if the components collide.
-                 * @param processCallback An optional callback function that lets you perform additional checks against the two components if they collide. If this is set then `collideCallback` will only be called if this callback returns `true`.
+                 * @param object1 The first object or array of objects to check.
+                 * @param object2 The second object or array of objects to check, or `undefined`.
+                 * @param collideCallback An optional callback function that is called if the objects collide.
+                 * @param processCallback An optional callback function that lets you perform additional checks against the two objects if they collide. If this is set then `collideCallback` will only be called if this callback returns `true`.
                  * @param callbackContext The context in which to run the callbacks.
                  */
                 collide(object1: ArcadeColliderType, object2?: ArcadeColliderType, collideCallback?: ArcadePhysicsCallback, processCallback?: ArcadePhysicsCallback, callbackContext?: any): boolean;
@@ -53511,25 +53511,25 @@ declare namespace Phaser {
                  * Please use Phaser.Physics.Arcade.World#collide instead.
                  * @param sprite The first object to check for collision.
                  * @param tilemapLayer The second object to check for collision.
-                 * @param collideCallback An optional callback function that is called if the components collide.
-                 * @param processCallback An optional callback function that lets you perform additional checks against the two components if they collide. If this is set then `collideCallback` will only be called if this callback returns `true`.
+                 * @param collideCallback An optional callback function that is called if the objects collide.
+                 * @param processCallback An optional callback function that lets you perform additional checks against the two objects if they collide. If this is set then `collideCallback` will only be called if this callback returns `true`.
                  * @param callbackContext The context in which to run the callbacks.
                  * @param overlapOnly Whether this is a collision or overlap check.
                  */
                 collideSpriteVsTilemapLayer(sprite: Phaser.GameObjects.GameObject, tilemapLayer: Phaser.Tilemaps.DynamicTilemapLayer | Phaser.Tilemaps.StaticTilemapLayer, collideCallback?: ArcadePhysicsCallback, processCallback?: ArcadePhysicsCallback, callbackContext?: any, overlapOnly?: boolean): boolean;
 
                 /**
-                 * Wrap an object's coordinates (or several components' coordinates) within {@link Phaser.Physics.Arcade.World#bounds}.
+                 * Wrap an object's coordinates (or several objects' coordinates) within {@link Phaser.Physics.Arcade.World#bounds}.
                  * 
                  * If the object is outside any boundary edge (left, top, right, bottom), it will be moved to the same offset from the opposite edge (the interior).
-                 * @param object A Game Object, a Group, an object with `x` and `y` coordinates, or an array of such components.
+                 * @param object A Game Object, a Group, an object with `x` and `y` coordinates, or an array of such objects.
                  * @param padding An amount added to each boundary edge during the operation. Default 0.
                  */
                 wrap(object: any, padding?: number): void;
 
                 /**
                  * Wrap each object's coordinates within {@link Phaser.Physics.Arcade.World#bounds}.
-                 * @param objects An array of components to be wrapped.
+                 * @param objects An array of objects to be wrapped.
                  * @param padding An amount added to the boundary. Default 0.
                  */
                 wrapArray(objects: any[], padding?: number): void;
@@ -56972,7 +56972,7 @@ declare namespace Phaser {
                  */
                 gravity?: number;
                 /**
-                 * The size of the cells used for the broadphase pass. Increase this value if you have lots of large components in the world.
+                 * The size of the cells used for the broadphase pass. Increase this value if you have lots of large objects in the world.
                  */
                 cellSize?: number;
                 /**
@@ -57008,11 +57008,11 @@ declare namespace Phaser {
                  */
                 debugVelocityColor?: number;
                 /**
-                 * Maximum X velocity components can move.
+                 * Maximum X velocity objects can move.
                  */
                 maxVelocityX?: number;
                 /**
-                 * Maximum Y velocity components can move.
+                 * Maximum Y velocity objects can move.
                  */
                 maxVelocityY?: number;
                 /**
@@ -57090,11 +57090,11 @@ declare namespace Phaser {
                  */
                 velocityDebugColor: number;
                 /**
-                 * Maximum X velocity components can move.
+                 * Maximum X velocity objects can move.
                  */
                 maxVelocityX: number;
                 /**
-                 * Maximum Y velocity components can move.
+                 * Maximum Y velocity objects can move.
                  */
                 maxVelocityY: number;
                 /**
@@ -57408,7 +57408,7 @@ declare namespace Phaser {
         namespace Matter {
             namespace Components {
                 /**
-                 * A component to set restitution on components.
+                 * A component to set restitution on objects.
                  */
                 interface Bounce {
                     /**
@@ -58025,7 +58025,7 @@ declare namespace Phaser {
                 fromVertices(x: number, y: number, vertexSets: any[], options: object, flagInternal: boolean, removeCollinear: boolean, minimumArea: number): MatterJS.Body;
 
                 /**
-                 * Create a new composite containing Matter Image components created in a grid arrangement.
+                 * Create a new composite containing Matter Image objects created in a grid arrangement.
                  * This function uses the body bounds to prevent overlaps.
                  * @param key The key of the Texture this Game Object will use to render with, as stored in the Texture Manager.
                  * @param frame An optional frame from the Texture this Game Object is rendering with. Set to `null` to skip this value.
@@ -61159,7 +61159,7 @@ declare namespace Phaser {
 
             /**
              * Game instance has been destroyed.
-             * You must release everything in here, all references, all components, free it all up.
+             * You must release everything in here, all references, all objects, free it all up.
              */
             destroy(): void;
 
@@ -62201,7 +62201,7 @@ declare namespace Phaser {
 
                 /**
                  * TextureTintPipeline implements the rendering infrastructure
-                 * for displaying textured components
+                 * for displaying textured objects
                  * The config properties are:
                  * - game: Current game instance.
                  * - renderer: Current WebGL renderer.
@@ -62519,18 +62519,18 @@ declare namespace Phaser {
                 function getTintFromFloats(r: number, g: number, b: number, a: number): number;
 
                 /**
-                 * Packs a Uint24, representing RGB components, with a Float32, representing
+                 * Packs a Uint24, representing RGB objects, with a Float32, representing
                  * the alpha component, with a range between 0.0 and 1.0 and return a Uint32
-                 * @param rgb Uint24 representing RGB components
+                 * @param rgb Uint24 representing RGB objects
                  * @param a Float32 representing Alpha component
                  */
                 function getTintAppendFloatAlpha(rgb: number, a: number): number;
 
                 /**
-                 * Packs a Uint24, representing RGB components, with a Float32, representing
+                 * Packs a Uint24, representing RGB objects, with a Float32, representing
                  * the alpha component, with a range between 0.0 and 1.0 and return a 
                  * swizzled Uint32
-                 * @param rgb Uint24 representing RGB components
+                 * @param rgb Uint24 representing RGB objects
                  * @param a Float32 representing Alpha component
                  */
                 function getTintAppendFloatAlphaAndSwap(rgb: number, a: number): number;
@@ -62574,7 +62574,7 @@ declare namespace Phaser {
              * 
              * The vertex attributes properties are:
              * - name : String - Name of the attribute in the vertex shader
-             * - size : integer - How many components describe the attribute. For ex: vec3 = size of 3, float = size of 1
+             * - size : integer - How many objects describe the attribute. For ex: vec3 = size of 3, float = size of 1
              * - type : GLenum - WebGL type (gl.BYTE, gl.SHORT, gl.UNSIGNED_BYTE, gl.UNSIGNED_SHORT, gl.FLOAT)
              * - normalized : boolean - Is the attribute normalized
              * - offset : integer - The offset in bytes to the current attribute in the vertex. Equivalent to offsetof(vertex, attrib) in C
@@ -62654,7 +62654,7 @@ declare namespace Phaser {
                 program: WebGLProgram;
 
                 /**
-                 * Array of components that describe the vertex attributes
+                 * Array of objects that describe the vertex attributes
                  */
                 attributes: object;
 
@@ -62675,7 +62675,7 @@ declare namespace Phaser {
                 bytes: Uint8Array;
 
                 /**
-                 * This will store the amount of components of 32 bit length
+                 * This will store the amount of objects of 32 bit length
                  */
                 vertexComponentCount: integer;
 
@@ -63216,7 +63216,7 @@ declare namespace Phaser {
                 /**
                  * Creates a new custom blend mode for the renderer.
                  * @param func An array containing the WebGL functions to use for the source and the destination blending factors, respectively. See the possible constants for {@link WebGLRenderingContext#blendFunc()}.
-                 * @param equation The equation to use for combining the RGB and alpha components of a new pixel with a rendered one. See the possible constants for {@link WebGLRenderingContext#blendEquation()}.
+                 * @param equation The equation to use for combining the RGB and alpha objects of a new pixel with a rendered one. See the possible constants for {@link WebGLRenderingContext#blendEquation()}.
                  */
                 addBlendMode(func: Function, equation: Function): integer;
 
@@ -63448,7 +63448,7 @@ declare namespace Phaser {
                  * Creates a WebGL Texture based on the given canvas element.
                  * @param srcCanvas The Canvas element that will be used to populate the texture.
                  * @param dstTexture Is this going to replace an existing texture? If so, pass it here.
-                 * @param noRepeat Should this canvas never be allowed to set REPEAT? (such as for Text components) Default false.
+                 * @param noRepeat Should this canvas never be allowed to set REPEAT? (such as for Text objects) Default false.
                  */
                 canvasToTexture(srcCanvas: HTMLCanvasElement, dstTexture?: WebGLTexture, noRepeat?: boolean): WebGLTexture;
 
@@ -63812,8 +63812,8 @@ declare namespace Phaser {
              * The Scale Manager Resize Event.
              * 
              * This event is dispatched whenever the Scale Manager detects a resize event from the browser.
-             * It sends three parameters to the callback, each of them being Size components. You can read
-             * the `width`, `height`, `aspectRatio` and other properties of these components to help with
+             * It sends three parameters to the callback, each of them being Size objects. You can read
+             * the `width`, `height`, `aspectRatio` and other properties of these objects to help with
              * scaling your own game content.
              */
             const RESIZE: any;
@@ -64116,14 +64116,14 @@ declare namespace Phaser {
             /**
              * Call this to modify the size of the Phaser canvas element directly.
              * You should only use this if you are using the `NO_SCALE` scale mode,
-             * it will update all internal components completely.
+             * it will update all internal objects completely.
              * 
              * If all you want to do is change the size of the parent, see the `setParentSize` method.
              * 
              * If all you want is to change the base size of the game, but still have the Scale Manager
              * manage all the scaling, then see the `setGameSize` method.
              * 
-             * This method will set the `gameSize`, `baseSize` and `displaySize` components to the given
+             * This method will set the `gameSize`, `baseSize` and `displaySize` objects to the given
              * dimensions. It will then resize the canvas width and height to the values given, by
              * directly setting the properties. Finally, if you have set the Scale Manager zoom value
              * to anything other than 1 (the default), it will set the canvas CSS width and height to
@@ -64166,7 +64166,7 @@ declare namespace Phaser {
             updateOrientation(): void;
 
             /**
-             * Internal method that manages updating the size components based on the scale mode.
+             * Internal method that manages updating the size objects based on the scale mode.
              */
             updateScale(): void;
 
@@ -65591,7 +65591,7 @@ declare namespace Phaser {
              * Use this to organize the children contained in the update list.
              * 
              * The Update List is responsible for managing children that need their `preUpdate` methods called,
-             * in order to process so internal components, such as Sprites with Animations.
+             * in order to process so internal objects, such as Sprites with Animations.
              * 
              * In the default set-up there is no reference to this from within the Scene itself.
              */
@@ -66114,7 +66114,7 @@ declare namespace Phaser {
             /**
              * Removes all sounds from the sound manager that have an asset key matching the given value.
              * The removed sounds are destroyed before removal.
-             * @param key The key to match when removing sound components.
+             * @param key The key to match when removing sound objects.
              */
             removeByKey(key: string): number;
 
@@ -66201,7 +66201,7 @@ declare namespace Phaser {
             /**
              * The Sound Complete Event.
              * 
-             * This event is dispatched by both Web Audio and HTML5 Audio Sound components when they complete playback.
+             * This event is dispatched by both Web Audio and HTML5 Audio Sound objects when they complete playback.
              * 
              * Listen to it from a Sound instance using `Sound.on('complete', listener)`, i.e.:
              * 
@@ -66216,7 +66216,7 @@ declare namespace Phaser {
             /**
              * The Sound Destroy Event.
              * 
-             * This event is dispatched by both Web Audio and HTML5 Audio Sound components when they are destroyed, either
+             * This event is dispatched by both Web Audio and HTML5 Audio Sound objects when they are destroyed, either
              * directly or via a Sound Manager.
              * 
              * Listen to it from a Sound instance using `Sound.on('destroy', listener)`, i.e.:
@@ -66232,7 +66232,7 @@ declare namespace Phaser {
             /**
              * The Sound Detune Event.
              * 
-             * This event is dispatched by both Web Audio and HTML5 Audio Sound components when their detune value changes.
+             * This event is dispatched by both Web Audio and HTML5 Audio Sound objects when their detune value changes.
              * 
              * Listen to it from a Sound instance using `Sound.on('detune', listener)`, i.e.:
              * 
@@ -66290,7 +66290,7 @@ declare namespace Phaser {
             /**
              * The Sound Looped Event.
              * 
-             * This event is dispatched by both Web Audio and HTML5 Audio Sound components when they loop during playback.
+             * This event is dispatched by both Web Audio and HTML5 Audio Sound objects when they loop during playback.
              * 
              * Listen to it from a Sound instance using `Sound.on('looped', listener)`, i.e.:
              * 
@@ -66308,7 +66308,7 @@ declare namespace Phaser {
             /**
              * The Sound Loop Event.
              * 
-             * This event is dispatched by both Web Audio and HTML5 Audio Sound components when their loop state is changed.
+             * This event is dispatched by both Web Audio and HTML5 Audio Sound objects when their loop state is changed.
              * 
              * Listen to it from a Sound instance using `Sound.on('loop', listener)`, i.e.:
              * 
@@ -66325,7 +66325,7 @@ declare namespace Phaser {
             /**
              * The Sound Mute Event.
              * 
-             * This event is dispatched by both Web Audio and HTML5 Audio Sound components when their mute state changes.
+             * This event is dispatched by both Web Audio and HTML5 Audio Sound objects when their mute state changes.
              * 
              * Listen to it from a Sound instance using `Sound.on('mute', listener)`, i.e.:
              * 
@@ -66352,7 +66352,7 @@ declare namespace Phaser {
             /**
              * The Sound Pause Event.
              * 
-             * This event is dispatched by both Web Audio and HTML5 Audio Sound components when they are paused.
+             * This event is dispatched by both Web Audio and HTML5 Audio Sound objects when they are paused.
              * 
              * Listen to it from a Sound instance using `Sound.on('pause', listener)`, i.e.:
              * 
@@ -66368,7 +66368,7 @@ declare namespace Phaser {
             /**
              * The Sound Play Event.
              * 
-             * This event is dispatched by both Web Audio and HTML5 Audio Sound components when they are played.
+             * This event is dispatched by both Web Audio and HTML5 Audio Sound objects when they are played.
              * 
              * Listen to it from a Sound instance using `Sound.on('play', listener)`, i.e.:
              * 
@@ -66383,7 +66383,7 @@ declare namespace Phaser {
             /**
              * The Sound Rate Change Event.
              * 
-             * This event is dispatched by both Web Audio and HTML5 Audio Sound components when their rate changes.
+             * This event is dispatched by both Web Audio and HTML5 Audio Sound objects when their rate changes.
              * 
              * Listen to it from a Sound instance using `Sound.on('rate', listener)`, i.e.:
              * 
@@ -66410,7 +66410,7 @@ declare namespace Phaser {
             /**
              * The Sound Resume Event.
              * 
-             * This event is dispatched by both Web Audio and HTML5 Audio Sound components when they are resumed from a paused state.
+             * This event is dispatched by both Web Audio and HTML5 Audio Sound objects when they are resumed from a paused state.
              * 
              * Listen to it from a Sound instance using `Sound.on('resume', listener)`, i.e.:
              * 
@@ -66427,7 +66427,7 @@ declare namespace Phaser {
             /**
              * The Sound Seek Event.
              * 
-             * This event is dispatched by both Web Audio and HTML5 Audio Sound components when they are seeked to a new position.
+             * This event is dispatched by both Web Audio and HTML5 Audio Sound objects when they are seeked to a new position.
              * 
              * Listen to it from a Sound instance using `Sound.on('seek', listener)`, i.e.:
              * 
@@ -66454,7 +66454,7 @@ declare namespace Phaser {
             /**
              * The Sound Stop Event.
              * 
-             * This event is dispatched by both Web Audio and HTML5 Audio Sound components when they are stopped.
+             * This event is dispatched by both Web Audio and HTML5 Audio Sound objects when they are stopped.
              * 
              * Listen to it from a Sound instance using `Sound.on('stop', listener)`, i.e.:
              * 
@@ -66481,7 +66481,7 @@ declare namespace Phaser {
             /**
              * The Sound Volume Event.
              * 
-             * This event is dispatched by both Web Audio and HTML5 Audio Sound components when their volume changes.
+             * This event is dispatched by both Web Audio and HTML5 Audio Sound objects when their volume changes.
              * 
              * Listen to it from a Sound instance using `Sound.on('volume', listener)`, i.e.:
              * 
@@ -66988,7 +66988,7 @@ declare namespace Phaser {
             parent: any;
 
             /**
-             * The components that belong to this collection.
+             * The objects that belong to this collection.
              */
             list: T[];
 
@@ -68440,7 +68440,7 @@ declare namespace Phaser {
             dataSource: any[];
 
             /**
-             * A key-value object pair associating the unique Frame keys with the Frames components.
+             * A key-value object pair associating the unique Frame keys with the Frames objects.
              */
             frames: object;
 
@@ -69013,7 +69013,7 @@ declare namespace Phaser {
             /**
              * The Tileset/s associated with this layer.
              * 
-             * As of Phaser 3.14 this property is now an array of Tileset components, previously it was a single reference.
+             * As of Phaser 3.14 this property is now an array of Tileset objects, previously it was a single reference.
              */
             tileset: Phaser.Tilemaps.Tileset[];
 
@@ -69319,7 +69319,7 @@ declare namespace Phaser {
 
             /**
              * Puts an array of tiles or a 2D array of tiles at the given tile coordinates in the specified
-             * layer. The array can be composed of either tile indexes or Tile components. If you pass in a Tile,
+             * layer. The array can be composed of either tile indexes or Tile objects. If you pass in a Tile,
              * all attributes will be copied over to the specified location. If you pass in an index, only the
              * index at the specified location will be changed. Collision information will be recalculated
              * within the region tiles were changed.
@@ -69456,7 +69456,7 @@ declare namespace Phaser {
 
             /**
              * Sets collision on the tiles within a layer by checking each tiles collision group data
-             * (typically defined in Tiled within the tileset collision editor). If any components are found within
+             * (typically defined in Tiled within the tileset collision editor). If any objects are found within
              * a tiles collision group, the tile's colliding information will be set. The `collides` parameter
              * controls if collision will be enabled (true) or disabled (false).
              * @param collides If true it will enable collision. If false it will clear collision. Default true.
@@ -69558,7 +69558,7 @@ declare namespace Phaser {
              * @param tileY The top most tile index (in tile coordinates) to use as the origin of the area. Default 0.
              * @param width How many tiles wide from the `tileX` index the area will be. Default max width based on tileX.
              * @param height How many tiles tall from the `tileY` index the area will be. Default max height based on tileY.
-             * @param weightedIndexes An array of components to randomly draw from during
+             * @param weightedIndexes An array of objects to randomly draw from during
              * randomization. They should be in the form: { index: 0, weight: 4 } or
              * { index: [0, 1], weight: 4 } if you wish to draw from multiple tile indexes.
              */
@@ -70558,13 +70558,13 @@ declare namespace Phaser {
             visible: boolean;
 
             /**
-             * An array of all components on this Object Layer.
+             * An array of all objects on this Object Layer.
              * 
              * Each Tiled object corresponds to a JavaScript object in this array. It has an `id` (unique), `name` (as assigned in Tiled), `type` (as assigned in Tiled), `rotation` (in clockwise degrees), `properties` (if any), `visible` state (`true` if visible, `false` otherwise), `x` and `y` coordinates (in pixels, relative to the tilemap), and a `width` and `height` (in pixels).
              * 
              * An object tile has a `gid` property (GID of the represented tile), a `flippedHorizontal` property, a `flippedVertical` property, and `flippedAntiDiagonal` property. The {@link http://docs.mapeditor.org/en/latest/reference/tmx-map-format/|Tiled documentation} contains information on flipping and rotation.
              * 
-             * Polylines have a `polyline` property, which is an array of components corresponding to points, where each point has an `x` property and a `y` property. Polygons have an identically structured array in their `polygon` property. Text components have a `text` property with the text's properties.
+             * Polylines have a `polyline` property, which is an array of objects corresponding to points, where each point has an `x` property and a `y` property. Polygons have an identically structured array in their `polygon` property. Text objects have a `text` property with the text's properties.
              * 
              * Rectangles and ellipses have a `rectangle` or `ellipse` property set to `true`.
              */
@@ -70707,7 +70707,7 @@ declare namespace Phaser {
                 function ParseObject(tiledObject: object, offsetX?: number, offsetY?: number): object;
 
                 /**
-                 * Parses a Tiled JSON object into an array of ObjectLayer components.
+                 * Parses a Tiled JSON object into an array of ObjectLayer objects.
                  * @param json The Tiled JSON object.
                  */
                 function ParseObjectLayers(json: object): any[];
@@ -70803,7 +70803,7 @@ declare namespace Phaser {
             /**
              * The Tileset/s associated with this layer.
              * 
-             * As of Phaser 3.14 this property is now an array of Tileset components, previously it was a single reference.
+             * As of Phaser 3.14 this property is now an array of Tileset objects, previously it was a single reference.
              */
             tileset: Phaser.Tilemaps.Tileset[];
 
@@ -71178,7 +71178,7 @@ declare namespace Phaser {
 
             /**
              * Sets collision on the tiles within a layer by checking each tiles collision group data
-             * (typically defined in Tiled within the tileset collision editor). If any components are found within
+             * (typically defined in Tiled within the tileset collision editor). If any objects are found within
              * a tiles collision group, the tile's colliding information will be set. The `collides` parameter
              * controls if collision will be enabled (true) or disabled (false).
              * @param collides If true it will enable collision. If false it will clear
@@ -72304,7 +72304,7 @@ declare namespace Phaser {
          * A Tilemap is a container for Tilemap data. This isn't a display object, rather, it holds data
          * about the map and allows you to add tilesets and tilemap layers to it. A map can have one or
          * more tilemap layers (StaticTilemapLayer or DynamicTilemapLayer), which are the display
-         * components that actually render tiles.
+         * objects that actually render tiles.
          * 
          * The Tilemap data be parsed from a Tiled JSON file, a CSV file or a 2D array. Tiled is a free
          * software package specifically for creating tile maps, and is available from:
@@ -72535,8 +72535,8 @@ declare namespace Phaser {
              * Sprite's {@link Phaser.GameObjects.Sprite#data data store}.
              * @param name The name of the object layer (from Tiled) to create Sprites from.
              * @param id Either the id (object), gid (tile object) or name (object or
-             * tile object) from Tiled. Ids are unique in Tiled, but a gid is shared by all tile components
-             * with the same graphic. The same name can be used on multiple components.
+             * tile object) from Tiled. Ids are unique in Tiled, but a gid is shared by all tile objects
+             * with the same graphic. The same name can be used on multiple objects.
              * @param spriteConfig The config object to pass into the Sprite creator (i.e.
              * scene.make.sprite).
              * @param scene The Scene to create the Sprites within. Default the scene the map is within.
@@ -72601,7 +72601,7 @@ declare namespace Phaser {
 
             /**
              * For each object in the given object layer, run the given filter callback function. Any
-             * components that pass the filter test (i.e. where the callback returns true) will returned as a
+             * objects that pass the filter test (i.e. where the callback returns true) will returned as a
              * new array. Similar to Array.prototype.Filter in vanilla JS.
              * @param objectLayer The name of an object layer (from Tiled) or an ObjectLayer instance.
              * @param callback The callback. Each object in the given area will be passed to this callback as the first and only parameter.
@@ -72707,7 +72707,7 @@ declare namespace Phaser {
             getLayer(layer?: string | integer | Phaser.Tilemaps.DynamicTilemapLayer | Phaser.Tilemaps.StaticTilemapLayer): Phaser.Tilemaps.LayerData;
 
             /**
-             * Gets the ObjectLayer from this.components that has the given `name`, or null if no ObjectLayer
+             * Gets the ObjectLayer from this.objects that has the given `name`, or null if no ObjectLayer
              * is found with that name.
              * @param name The name of the object layer from Tiled.
              */
@@ -72864,7 +72864,7 @@ declare namespace Phaser {
 
             /**
              * Puts an array of tiles or a 2D array of tiles at the given tile coordinates in the specified
-             * layer. The array can be composed of either tile indexes or Tile components. If you pass in a Tile,
+             * layer. The array can be composed of either tile indexes or Tile objects. If you pass in a Tile,
              * all attributes will be copied over to the specified location. If you pass in an index, only the
              * index at the specified location will be changed. Collision information will be recalculated
              * within the region tiles were changed.
@@ -73048,7 +73048,7 @@ declare namespace Phaser {
 
             /**
              * Sets collision on the tiles within a layer by checking each tile's collision group data
-             * (typically defined in Tiled within the tileset collision editor). If any components are found within
+             * (typically defined in Tiled within the tileset collision editor). If any objects are found within
              * a tile's collision group, the tile's colliding information will be set. The `collides` parameter
              * controls if collision will be enabled (true) or disabled (false).
              * 
@@ -73208,7 +73208,7 @@ declare namespace Phaser {
              * @param tileY The top most tile index (in tile coordinates) to use as the origin of the area. Default 0.
              * @param width How many tiles wide from the `tileX` index the area will be. Default max width based on tileX.
              * @param height How many tiles tall from the `tileY` index the area will be. Default max height based on tileY.
-             * @param weightedIndexes An array of components to randomly draw from during
+             * @param weightedIndexes An array of objects to randomly draw from during
              * randomization. They should be in the form: { index: 0, weight: 4 } or
              * { index: [0, 1], weight: 4 } if you wish to draw from multiple tile indexes.
              * @param layer The tile layer to use. If not given the current layer is used.
@@ -73315,7 +73315,7 @@ declare namespace Phaser {
 
             /**
              * Tileset-specific data per tile that are typically defined in the Tiled editor, e.g. within
-             * the Tileset collision editor. This is where collision components and terrain are stored.
+             * the Tileset collision editor. This is where collision objects and terrain are stored.
              */
             tileData: object;
 
@@ -73694,7 +73694,7 @@ declare namespace Phaser {
              * 
              * The configuration object (`config`) can have the following properties:
              * 
-             * `tweens` - an array of tween configuration components to create and add into the new Timeline, as described by `TweenBuilder`. If this doesn't exist or is empty, the Timeline will start off paused and none of the other configuration settings will be read. If it's a function, it will be called and its return value will be used as the array.
+             * `tweens` - an array of tween configuration objects to create and add into the new Timeline, as described by `TweenBuilder`. If this doesn't exist or is empty, the Timeline will start off paused and none of the other configuration settings will be read. If it's a function, it will be called and its return value will be used as the array.
              * `targets` - an array (or function which returns one) of default targets to which to apply the Timeline. Each individual Tween configuration can override this value.
              * `totalDuration` - if specified, each Tween in the Timeline will get an equal portion of this duration, usually in milliseconds, by default. Each individual Tween configuration can override the Tween's duration.
              * `duration` - if `totalDuration` is not specified, the default duration, usually in milliseconds, of each Tween which will be created. Each individual Tween configuration can override the Tween's duration.
@@ -73886,7 +73886,7 @@ declare namespace Phaser {
             isTimeline: boolean;
 
             /**
-             * An array of Tween components, each containing a unique property and target being tweened.
+             * An array of Tween objects, each containing a unique property and target being tweened.
              */
             data: any[];
 
@@ -74190,7 +74190,7 @@ declare namespace Phaser {
 
         type TweenConfigDefaults = {
             /**
-             * The object, or an array of components, to run the tween on.
+             * The object, or an array of objects, to run the tween on.
              */
             targets: object | object[];
             /**
@@ -74236,7 +74236,7 @@ declare namespace Phaser {
         };
 
         /**
-         * A Tween is able to manipulate the properties of one or more components to any given value, based
+         * A Tween is able to manipulate the properties of one or more objects to any given value, based
          * on a duration and type of ease. They are rarely instantiated directly and instead should be
          * created via the TweenManager.
          */
@@ -74244,7 +74244,7 @@ declare namespace Phaser {
             /**
              * 
              * @param parent A reference to the parent of this Tween. Either the Tween Manager or a Tween Timeline instance.
-             * @param data An array of TweenData components, each containing a unique property to be tweened.
+             * @param data An array of TweenData objects, each containing a unique property to be tweened.
              * @param targets An array of targets to be tweened.
              */
             constructor(parent: Phaser.Tweens.TweenManager | Phaser.Tweens.Timeline, data: Phaser.Tweens.TweenDataConfig[], targets: any[]);
@@ -74261,7 +74261,7 @@ declare namespace Phaser {
             parentIsTimeline: boolean;
 
             /**
-             * An array of TweenData components, each containing a unique property and target being tweened.
+             * An array of TweenData objects, each containing a unique property and target being tweened.
              */
             data: Phaser.Tweens.TweenDataConfig[];
 
@@ -74886,7 +74886,7 @@ declare namespace Phaser {
             /**
              * Searches a pre-sorted array for the closet value to the given number.
              * 
-             * If the `key` argument is given it will assume the array contains components that all have the required `key` property name,
+             * If the `key` argument is given it will assume the array contains objects that all have the required `key` property name,
              * and will check for the closest value of those to the given number.
              * @param value The value to search for in the array.
              * @param array The array to search, which must be sorted.
@@ -75290,7 +75290,7 @@ declare namespace Phaser {
 
         namespace Objects {
             /**
-             * Shallow Object Clone. Will not clone nested components.
+             * Shallow Object Clone. Will not clone nested objects.
              * @param obj the object from which to clone
              */
             function Clone(obj: object): object;
@@ -75645,7 +75645,7 @@ declare namespace Phaser {
         leaderboards: Phaser.FacebookInstantGamesPlugin.Leaderboard[];
 
         /**
-         * Contains AdInstance components, as created by the `preloadAds()` method.
+         * Contains AdInstance objects, as created by the `preloadAds()` method.
          */
         ads: AdInstance[];
 
@@ -75995,7 +75995,7 @@ declare namespace Phaser {
         createContext(playerID: string): this;
 
         /**
-         * Fetches an array of ConnectedPlayer components containing information about active players
+         * Fetches an array of ConnectedPlayer objects containing information about active players
          * (people who played the game in the last 90 days) that are connected to the current player.
          * 
          * It makes an async call to the API, so the result isn't available immediately.
