@@ -15,8 +15,5 @@ export class Background extends Phaser.GameObjects.Container {
         this.scene.add.existing(this);
         let config = {target:this, ease:'Linear', duration: 3000, loop: -1, tweens: [{targets: this, x: -1000}] };
         this.scene.tweens.timeline(config);
-        // setInterval(()=>{
-        //     config.duration+=100
-        // },3000)
     }
 }
