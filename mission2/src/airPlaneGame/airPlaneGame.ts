@@ -22,13 +22,17 @@ const config: GameConfig = {
 };
 
 // game class
-export class Game extends Phaser.Game {
+export class AirPlaneGame extends Phaser.Game {
   constructor(config: GameConfig) {
     super(config);
+  }
+
+  static create(args:any){
+    return new AirPlaneGame(args);
   }
 }
 
 // when the page is loaded, create our game instance
 window.addEventListener("load", () => {
-  var game = new Game(config);
+    AirPlaneGame.create(config);
 });

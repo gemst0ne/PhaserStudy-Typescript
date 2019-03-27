@@ -1,4 +1,4 @@
-export class Level extends Phaser.GameObjects.Sprite {
+export class BatterySprite extends Phaser.GameObjects.Sprite {
     constructor(args: any) {
         super(args.scene, args.x, args.y, args.texture);
         this.scene.add.existing(this);
@@ -6,5 +6,9 @@ export class Level extends Phaser.GameObjects.Sprite {
         this.scene.anims.create({key: 'move', frames: this.anims.animationManager.generateFrameNames('level') ,frameRate: 7, repeat:-1});
         this.anims.load('move');
         this.anims.play('move');
+    }
+
+    static create(args: any) {
+        return new BatterySprite(args)
     }
 }

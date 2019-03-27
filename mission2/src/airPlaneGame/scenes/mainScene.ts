@@ -1,6 +1,6 @@
-import {Level} from "../objects/level";
-import {Background} from "../objects/background/background";
-import {Plane} from "../objects/plane/plane";
+import {BatterySprite} from "../objects/battery/batterySprite";
+import {BackgroundContainer} from "../objects/background/backgroundContainer";
+import {PlaneContainer} from "../objects/plane/planeContainer";
 
 
 export class MainScene extends Phaser.Scene {
@@ -26,9 +26,9 @@ export class MainScene extends Phaser.Scene {
   }
 
   create(): void {
-      this.levelObject = new Level({scene: this, x: 750, y:100, texture: "level"});
-      new Background({scene: this, x: 0, y:0, children: []});
-      new Plane({scene: this, x: 0, y:0, children: []})
+      this.levelObject = BatterySprite.create({scene: this, x: 750, y:100, texture: "level"});
+      BackgroundContainer.create({scene: this, x: 0, y:0, children: []});
+      PlaneContainer.create({scene: this, x: 0, y:0, children: []});
       this.attachEvent();
   }
 
