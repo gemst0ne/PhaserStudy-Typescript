@@ -1,10 +1,19 @@
-export class BrickSprite extends Phaser.GameObjects.Sprite {
-    constructor(args: any) {
-        super(args.scene, args.x, args.y, args.texture);
-        this.scene.add.existing(this);
-    }
+interface ISpriteArgType {
+    scene: Phaser.Scene,
+    x: number,
+    y: number,
+    texture: string
+}
 
-    static create(args: any) {
-        return new BrickSprite(args)
+export namespace parts {
+    export class BrickSprite extends Phaser.GameObjects.Sprite {
+        constructor(args: ISpriteArgType) {
+            super(args.scene, args.x, args.y, args.texture);
+            this.scene.add.existing(this);
+        }
+
+        static create(args: ISpriteArgType) {
+            return new BrickSprite(args)
+        }
     }
 }
