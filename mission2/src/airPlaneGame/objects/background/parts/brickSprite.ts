@@ -1,7 +1,7 @@
-interface ISpriteArgType {
-    scene: Phaser.Scene,
-    x: number,
-    y: number,
+type ISpriteArgType = {
+    scene: Phaser.Scene;
+    x: number;
+    y: number;
     texture: string
 }
 

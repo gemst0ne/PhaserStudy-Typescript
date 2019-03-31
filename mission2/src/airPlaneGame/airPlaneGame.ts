@@ -8,7 +8,6 @@ const config: GameConfig = {
   type: Phaser.AUTO,
   parent: "game",
   scene: MainScene,
-  backgroundColor: 0x664DE4,
   physics: {
     default: "arcade",
     arcade: {
