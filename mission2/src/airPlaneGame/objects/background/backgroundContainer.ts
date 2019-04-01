@@ -5,34 +5,41 @@ interface IContainerArgType {
     scene: Phaser.Scene,
     x: number,
     y: number,
-    children?: Phaser.GameObjects.Sprite [] // union type array 수정필요
+    children?: Phaser.GameObjects.Sprite[] // union type array 수정필요
 }
 
 export class BackgroundContainer extends Phaser.GameObjects.Container {
     private config: any;
 
     constructor(args: IContainerArgType) {
-        super(args.scene, args.x, args.y, args.children);
-        let childrenSprite = [
-            BrickSprite.create({scene: this.scene, x: 800, y: 250, texture: "smallBrick"}),
-            BrickSprite.create({scene: this.scene, x: 1000 + 800, y: 250, texture: "smallBrick"}),
-            BrickSprite.create({scene: this.scene, x: 90, y: 400, texture: "bigBrick"}),
-            BrickSprite.create({scene: this.scene, x: 1000 + 90, y: 400, texture: "bigBrick"}),
-            BrickSprite.create({scene: this.scene, x: 600, y: 583, texture: "bottomBrick"}),
-            BrickSprite.create({scene: this.scene, x: 1000 + 600, y: 583, texture: "bottomBrick"}),
-        ];
-        this.add(childrenSprite);
+        super(args.scene, args.x, args.y);
         this.scene.add.existing(this);
-        this.config = {target: this, ease: 'Linear', duration: 3000, loop: -1, tweens: [{targets: this, x: -1000}]};
-        this.scene.tweens.timeline(this.config);
+        this.addChildren();
+        this.setTweens();
     }
 
     public setConfig(velocity: string) {
         this.config.duration = (5000) / Number.parseFloat(velocity);
     }
 
+    private addChildren(){
+        this.add([
+            BrickSprite.create({scene: this.scene, x: 800, y: 250, texture: "smallBrick"}),
+            BrickSprite.create({scene: this.scene, x: 1000 + 800, y: 250, texture: "smallBrick"}),
+            BrickSprite.create({scene: this.scene, x: 90, y: 400, texture: "bigBrick"}),
+            BrickSprite.create({scene: this.scene, x: 1000 + 90, y: 400, texture: "bigBrick"}),
+            BrickSprite.create({scene: this.scene, x: 600, y: 583, texture: "bottomBrick"}),
+            BrickSprite.create({scene: this.scene, x: 1000 + 600, y: 583, texture: "bottomBrick"}),
+        ]);
+    }
 
-    static create(args: IContainerArgType) {
+    private setTweens(){
+        this.config = {target: this, ease: 'Linear', duration: 3000, loop: -1, tweens: [{targets: this, x: -1000}]};
+        this.scene.tweens.timeline(this.config);
+    }
+
+
+    static create(args) {
         return new BackgroundContainer(args)
     }
 }
