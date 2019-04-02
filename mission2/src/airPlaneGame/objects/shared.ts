@@ -1,0 +1,3 @@
+interface IobjectContainer {
+    addChildren()
+}
