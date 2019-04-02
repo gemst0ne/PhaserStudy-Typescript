@@ -1,19 +1,15 @@
-import {parts} from "./parts/brickSprite";
-import BrickSprite = parts.BrickSprite;
+import {BrickSprite} from "./parts/brickSprite";
 
-interface IContainerArgType {
-    scene: Phaser.Scene,
-    x: number,
-    y: number,
-    children?: Phaser.GameObjects.Sprite[] // union type array 수정필요
-}
+interface IbrickSpriteConfigArray extends Array<BrickSprite> {}
 
 export class BackgroundContainer extends Phaser.GameObjects.Container {
     private config: any;
+    private childrenArray: IbrickSpriteConfigArray;
 
-    constructor(args: IContainerArgType) {
-        super(args.scene, args.x, args.y);
+    constructor(scene: Phaser.Scene, x: number = 0, y: number = 0) {
+        super(scene, x, y);
         this.scene.add.existing(this);
+        this.createChildren();
         this.addChildren();
         this.setTweens();
     }
@@ -22,15 +18,19 @@ export class BackgroundContainer extends Phaser.GameObjects.Container {
         this.config.duration = (5000) / Number.parseFloat(velocity);
     }
 
-    private addChildren(){
-        this.add([
+    private createChildren() {
+        this.childrenArray = [
             BrickSprite.create({scene: this.scene, x: 800, y: 250, texture: "smallBrick"}),
             BrickSprite.create({scene: this.scene, x: 1000 + 800, y: 250, texture: "smallBrick"}),
             BrickSprite.create({scene: this.scene, x: 90, y: 400, texture: "bigBrick"}),
             BrickSprite.create({scene: this.scene, x: 1000 + 90, y: 400, texture: "bigBrick"}),
             BrickSprite.create({scene: this.scene, x: 600, y: 583, texture: "bottomBrick"}),
-            BrickSprite.create({scene: this.scene, x: 1000 + 600, y: 583, texture: "bottomBrick"}),
-        ]);
+            BrickSprite.create({scene: this.scene, x: 1000 + 600, y: 583, texture: "bottomBrick"})
+        ];
+    }
+
+    private addChildren() {
+        this.add(this.childrenArray);
     }
 
     private setTweens(){
@@ -39,7 +39,7 @@ export class BackgroundContainer extends Phaser.GameObjects.Container {
     }
 
 
-    static create(args) {
-        return new BackgroundContainer(args)
+    static create(scene:Phaser.Scene) {
+        return new BackgroundContainer(scene)
     }
 }

@@ -53,7 +53,7 @@ export class MainScene extends Phaser.Scene {
     }
 
     private createTextContainer(): void {
-        this.container = TextContainer.create({scene: this, x: 0, y: 0, children: []});
+        this.container = TextContainer.create(this);
         this.text = this.container.getDynamicText();
     }
 
@@ -66,11 +66,11 @@ export class MainScene extends Phaser.Scene {
     }
 
     private createPlaneContainer(): void {
-        PlaneContainer.create({scene: this, x: 0, y: 0, children: []});
+        PlaneContainer.create(this);
     }
 
     private createBackGroundContainer(): void {
-        this.backGround = BackgroundContainer.create({scene: this, x: 0, y: 0, children: []});
+        this.backGround = BackgroundContainer.create(this);
     }
 
     private attachEvent(): void {

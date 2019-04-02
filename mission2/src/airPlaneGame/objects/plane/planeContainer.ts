@@ -1,22 +1,30 @@
 import {PlaneBodyImage} from "./parts/planeBodyImage";
 import {PlaneLightImage} from "./parts/planeLightImage";
 
+interface IplanePartsArray extends Array<PlaneLightImage | PlaneBodyImage> {}
+
 export class PlaneContainer extends Phaser.GameObjects.Container {
-    constructor(args: any) {
-        super(args.scene, args.x, args.y);
+    private childrenArray : IplanePartsArray;
+
+    constructor(scene: Phaser.Scene, x: number = 0, y: number = 0) {
+        super(scene, x, y);
         this.scene.add.existing(this);
+        this.createChildren();
         this.addChildren();
     }
 
-
-    addChildren(){
-        this.add([
+    private createChildren() {
+        this.childrenArray = [
             PlaneLightImage.create({scene: this.scene, x: 450, y: 300, texture: "planeLight"}),
             PlaneBodyImage.create({scene: this.scene, x: 400, y: 300, texture: "planeBody"})
-        ]);
+        ]
     }
 
-    static create(args: any) {
-        return new PlaneContainer(args)
+    private addChildren() {
+        this.add(this.childrenArray);
+    }
+
+    static create(scene: Phaser.Scene) {
+        return new PlaneContainer(scene)
     }
 }
